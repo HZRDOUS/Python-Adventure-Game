@@ -10,9 +10,25 @@ def printOutInventory():
         print(f'- {item}')
     print("-" * 30 + "\n")
 
-inventory.append("Porscuitto")
+# inventory.append("Porscuitto")
 
-# def secondFloor():
+def secondFloor():
+    print("You arrived at the second floor, and are greeted with three doors.")
+    time.sleep(4)
+    print("21: The hospital should be somewhere in deez three doors. Let's go explorin'.")
+    time.sleep(4)
+    while True:
+        door = int(input("Which door do you want to go through? >>"))
+        if door == 1:
+            secondFloorDoor1()
+        elif door == 2:
+            secondFloorDoor2()
+        elif door == 3:
+            hospital()
+        else:
+            print("Invalid option.")
+            continue
+
     
 def savage21():
     print("21: Hey there, $&%^@. What's a lil kid doin in this castle? This a dangerous place.")
