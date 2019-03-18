@@ -12,6 +12,39 @@ def printOutInventory():
 
 # inventory.append("Porscuitto")
 
+def deathAftermath():
+    while True:
+        print("""
+        1. Replay
+        2. Quit""")
+        tryAgain = int(input("Try again?? >> "))
+        if tryAgain == 1:
+            intro()
+        elif tryAgain == 2:
+            break
+        else:
+            print("Bad input!")
+            continue
+
+def rightEdge():
+    print("huwefuihefwhuifewij")
+
+def leftEdge():
+    print("huifeie")
+
+def tryLeaving():
+    print("You try to open the castle door behind you quietly.")
+    time.sleep(3)
+    print("It doesn't budge. You're stuck.")
+    enterCastle().castleOptions()
+
+def walkMiddle():
+    print("You step into the middle of the castle foyer...")
+    time.sleep(3)
+    print("You die! The guarding monsters don't like intruders.")
+    deathAftermath()
+
+
 def enterCastle():
     print("You enter the castle ever-so-carefully. You're in the foyer now, and there are multiple creatures guarding a big staircase.")
     time.sleep(2)
@@ -23,6 +56,17 @@ def enterCastle():
             3. Creep around the right edge of the room.
             4. Creep around the left edge of the room.""")
             option = int(input("What do you want to do?"))
+            if option == 1:
+                tryLeaving()
+            elif option == 2:
+                walkMiddle()
+            elif option == 3:
+                rightEdge()
+            elif option == 4:
+                leftEdge()
+            else:
+                print("Invalid input.")
+                continue
 
 def talk1():
     print("Creature: Hey, kiddo! What are you doing here?")
@@ -51,9 +95,10 @@ def railway():
 
 def intro():
     print("Oh no! After falling asleep on the train back home, you accidentally got off a stop at some sort of castle.")
-    while True:
-        def introOptions():
-            print("""1. Go back to the railway to find a way home.
+    def introOptions():
+        while True:
+            print("""
+            1. Go back to the railway to find a way home.
             2. Talk to a bystanding creature
             3. Go up to the castle steps and enter.""")
             option = int(input("What do you want to do? >>"))
@@ -65,7 +110,7 @@ def intro():
                 enterCastle()
             else:
                 "Invalid option. Try again."
-                continue
+            continue
     
 
 def secondFloor():
@@ -74,7 +119,8 @@ def secondFloor():
     print("21: The hospital should be somewhere in deez three doors. Let's go explorin'.")
     time.sleep(4)
     while True:
-        print("""1. First Door
+        print("""
+    1. First Door
     2. Second Door
     3. Third Door""")
         door = int(input("Which door do you want to go through? >>"))
