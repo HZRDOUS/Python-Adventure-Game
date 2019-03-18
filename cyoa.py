@@ -27,7 +27,12 @@ def deathAftermath():
             continue
 
 def rightEdge():
-    print("huwefuihefwhuifewij")
+    print("You decide to sneak on the right.")
+    time.sleep(1)
+    print("You come across a door. You look inside.")
+    print("The creatures are having lunch in the cafeteria...")
+    time.sleep(2)
+    print("")
 
 def leftEdge():
     print("huifeie")
