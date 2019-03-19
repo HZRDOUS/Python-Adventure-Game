@@ -26,13 +26,94 @@ def deathAftermath():
             print("Bad input!")
             continue
 
+def rightAfterCafeteria():
+    print("You continue going left, and you approach a door.")
+    print("You try opening it- but it's locked. What do you wanna do?")
+    while True:
+        if "Key" in inventory:
+            while True:
+                print("""
+                1. Go back the way you came.
+                2. Use your key to unlock the door""")
+                option = int(input("What do you want to do? >> "))
+                if option == 1:
+                    print("You give up and walk back to square one.")
+                    enterCastle().castleOptions()
+                elif option == 2:
+                    print("You use your key to try and unlock it...")
+                    time.sleep(3)
+                    print("Voila! It works!")
+                    unlockedRoom()
+                elif option == 44:
+                    printOutInventory()
+                    continue
+                else: 
+                    print("Invalid option. Try again")
+                    continue
+
+
+
+
+def sneakyBeakyLike():
+    print("You sneak around the corners of the cafeteria.")
+    print("The creatures are far too distracted to notice you.")
+    time.sleep(5)
+    print("You snoop around and go to the shiny object... aha! You got it.")
+    time.sleep(1)
+    print("It's a key!")
+    inventory.append("Key")
+    time.sleep(3)
+    print("The key has been added to your inventory.")
+    print("(Handy tip: You can look at your inventory by entering \"44\" at any decision moment.)")
+    time.sleep(3)
+    print("You slowly make your way back to the entrance. You're now back where you started.")
+    rightAfterCafeteria()
+
+def nonchalantCafe():
+    print("You enter the cafe like you won't die...")
+    time.sleep(3)
+    print("But you do.")
+    print("These creatures don't take kindly to intruders!")
+    deathAftermath()
+
+def cafeteriaOptions():
+    while True:
+        print("""
+        Do you want to either:
+        1. Go in nonchalantly?
+        2. Go in sneaky-beaky like""")
+        option = int(input("What do you want to do? >> "))
+        if option == 1:
+            nonchalantCafe()
+        elif option == 2:
+            sneakyBeakyLike()
+        else:
+            print("Wrong input. Try again.")
+            continue
+
+
 def rightEdge():
     print("You decide to sneak on the right.")
     time.sleep(1)
     print("You come across a door. You look inside.")
-    print("The creatures are having lunch in the cafeteria...")
-    time.sleep(2)
-    print("")
+    print("The creatures are having lunch in the cafeteria... it's basically a riot in there!")
+    print("However, in the midst of the riot, you see a shimmer of a certain object...")
+    print("You aren't sure if it's worth it to go in there.")
+    time.sleep(5)
+    print("Do you want to try and enter?")
+    def rightEdgeOptions():
+        while True:
+            print("""
+            1. Go in
+            2. Continue on""")
+            option = int(input("What do you want to do?? >> "))
+            if option == 1:
+                cafeteriaOptions()
+            elif option == 2:
+                continueOn()
+            else:
+                print("Wrong input, try again")
+                continue
 
 def leftEdge():
     print("huifeie")
