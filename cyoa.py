@@ -1,5 +1,6 @@
 import time
 
+global name
 name = ""
 inventory = []
 
@@ -11,6 +12,21 @@ def printOutInventory():
     print("-" * 30 + "\n")
 
 # inventory.append("Porscuitto")
+
+def gameComplete():
+    print("Congrats! You completed the game! Would you like to quit, or try again?")
+    while True:
+        print("""
+        1. Replay
+        2. Quit""")
+        tryAgain = int(input("Try again?? >> "))
+        if tryAgain == 1:
+            intro()
+        elif tryAgain == 2:
+            break
+        else:
+            print("Bad input!")
+            continue
 
 def deathAftermath():
     while True:
@@ -26,6 +42,49 @@ def deathAftermath():
             print("Bad input!")
             continue
 
+def pokeCreature():
+    print("You poke the creature in the eyes as it lunges towards you...")
+    time.sleep(3)
+    inventory.remove("Key")
+    print("The monster stops. You blinded it, and it's now wandering around. ")
+    print("Congrats! You can go home now. What do you want to do?")
+    while True:
+        print("""
+        1. Go through the portal
+        2. Go back to the foyer... it's too easy.""")
+        option = int(input("What do you want to do?? >>"))
+        if option == 1:
+            print("You hop through the portal...")
+            time.sleep(3)
+            print("You successfully arrive back at the train station you came from.")
+            time.sleep(2)
+            gameComplete()
+        elif option == 2:
+            print("...")
+            time.sleep(2)
+            print("Are you serious??? ")
+            time.sleep(1)
+            print("You want to go back??")
+            time.sleep(1)
+            print("""
+            1. Yes
+            2. No""")
+            goBack = int(input("Really?? >> "))
+            if goBack == 1:
+                time.sleep(2)
+                print("Wow... well, alright, then.")
+                time.sleep(1)
+                print("You go back to where you started... for some reason...")
+                time.sleep(1)
+                triedUnlocking = True
+                enterCastle().castleOptions()
+
+def roomDeath():
+    print("You should probably know from your instincts these guys don't take well to reasoning.")
+    time.sleep(2)
+    print("Aaand you're dead!")
+    deathAftermath()
+
 def unlockedRoom():
     print("You enter the unlocked room... but you're greeted to a big surprise!")
     time.sleep(2)
@@ -38,6 +97,16 @@ def unlockedRoom():
         print("""
         1. Try talking some sense into it, Dr. Phil style.
         2. Poke it in the eye with the key""")
+        option = int(input("What do you want to do?? >> "))
+        if option == 1:
+            roomDeath()
+        elif option == 2:
+            pokeCreature()
+        elif option == 44:
+            printOutInventory()
+        else:
+            print("Invalid option.")
+            continue
         
 
 def rightAfterCafeteria():
@@ -144,30 +213,89 @@ def walkMiddle():
     print("You die! The guarding monsters don't like intruders.")
     deathAftermath()
 
+def tryUnlock():
+    print("You try unlocking the door...")
+    time.sleep(3)
+    print("There's no keyhole! No way out!")
+    global triedUnlocking
+    triedUnlocking = True
+    enterCastle().castleOptions()
 
 def enterCastle():
     print("You enter the castle ever-so-carefully. You're in the foyer now, and there are multiple creatures guarding a big staircase.")
     time.sleep(2)
     print("You think to yourself that you should probably be very quiet and sneaky if you're going to get out successfully.")
     def castleOptions():
-        while True:
-            print("""
-            1. Go back out of the castle.
-            2. Walk to the middle of the room and ignore your instincts.
-            3. Creep around the right edge of the room.
-            4. Creep around the left edge of the room.""")
-            option = int(input("What do you want to do?"))
-            if option == 1:
-                tryLeaving()
-            elif option == 2:
-                walkMiddle()
-            elif option == 3:
-                rightEdge()
-            elif option == 4:
-                leftEdge()
-            else:
-                print("Invalid input.")
-                continue
+        if "Key" not in inventory:
+            while True:
+                print("""
+                1. Go back out of the castle.
+                2. Walk to the middle of the room and ignore your instincts.
+                3. Creep around the right edge of the room.
+                4. Creep around the left edge of the room.""")
+                option = int(input("What do you want to do?"))
+                if option == 1:
+                    tryLeaving()
+                elif option == 2:
+                    walkMiddle()
+                elif option == 3:
+                    rightEdge()
+                elif option == 4:
+                    leftEdge()
+                else:
+                    print("Invalid input.")
+                    continue
+        elif "Key" in inventory and triedUnlocking is False:
+            while True:
+                print("""
+                1. Go back out of the castle.
+                2. Walk to the middle of the room and ignore your instincts.
+                3. Creep around the left edge of the room.
+                4. Try unlocking the front door with the key.""")
+                option = int(input("What do you want to do?"))
+                if option == 1:
+                    tryLeaving()
+                elif option == 2:
+                    walkMiddle()
+                elif option == 3:
+                    leftEdge()
+                elif option == 4:
+                    tryUnlock()
+                else:
+                    print("Invalid input.")
+                    continue
+        elif "Key" in inventory and triedUnlocking is True:
+            while True:
+                print("""
+                1. Go back out of the castle.
+                2. Walk to the middle of the room and ignore your instincts.
+                3. Creep around the left edge of the room.""")
+                option = int(input("What do you want to do?"))
+                if option == 1:
+                    tryLeaving()
+                elif option == 2:
+                    walkMiddle()
+                elif option == 3:
+                    leftEdge()
+                else:
+                    print("Invalid input.")
+                    continue
+        elif triedUnlocking is True:
+            while True:
+                print("""
+                1. Go back out of the castle.
+                2. Walk to the middle of the room and ignore your instincts.
+                3. Creep around the left edge of the room.""")
+                option = int(input("What do you want to do?"))
+                if option == 1:
+                    tryLeaving()
+                elif option == 2:
+                    walkMiddle()
+                elif option == 3:
+                    leftEdge()
+                else:
+                    print("Invalid input.")
+                    continue
 
 def talk1():
     print("Creature: Hey, kiddo! What are you doing here?")
@@ -343,4 +471,4 @@ def breakAfterConversation():
             print("Invalid option, try again.")
             continue
             
-savage21()
+intro()
