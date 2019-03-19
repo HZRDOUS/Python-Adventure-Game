@@ -56,7 +56,8 @@ def enterCastle():
     print("You think to yourself that you should probably be very quiet and sneaky if you're going to get out successfully.")
     def castleOptions():
         while True:
-            print("""1. Go back out of the castle.
+            print("""
+            1. Go back out of the castle.
             2. Walk to the middle of the room and ignore your instincts.
             3. Creep around the right edge of the room.
             4. Creep around the left edge of the room.""")
