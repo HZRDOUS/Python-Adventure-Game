@@ -26,6 +26,20 @@ def deathAftermath():
             print("Bad input!")
             continue
 
+def unlockedRoom():
+    print("You enter the unlocked room... but you're greeted to a big surprise!")
+    time.sleep(2)
+    print("A portal that says... back to your home town! Just your luck!")
+    time.sleep(2)
+    print("Oh yeah, did I mention that there's a bloodthirsty monster guarding that portal!")
+    time.sleep(2)
+    print("What are you going to do?")
+    while True:
+        print("""
+        1. Try talking some sense into it, Dr. Phil style.
+        2. Poke it in the eye with the key""")
+        
+
 def rightAfterCafeteria():
     print("You continue going left, and you approach a door.")
     print("You try opening it- but it's locked. What do you wanna do?")
