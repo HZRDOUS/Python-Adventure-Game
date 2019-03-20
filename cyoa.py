@@ -198,7 +198,6 @@ def rightEdgeOptions():
         else:
             print("Wrong input, try again")
             continue
-rightEdgeOptions()
 
 def leftEdge():
     print("huifeie")
@@ -284,7 +283,7 @@ def castleOptions():
             else:
                 print("Invalid input.")
                 continue
-    elif "Key" not in inventory and triedUnlocking is True:
+    elif "Key" not in inventory:
         while True:
             print("""
             1. Go back out of the castle.
@@ -326,10 +325,6 @@ def railway():
     print("No trains! You give up and head back to the front of the castle.")
     introOptions()
 
-def intro():
-    print("Oh no! After falling asleep on the train back home, you accidentally got off a stop at some sort of castle.")
-    introOptions()
-
 def introOptions():
         while True:
             print("""
@@ -346,7 +341,10 @@ def introOptions():
             else:
                 print("Invalid option. Try again.")
                 continue
-    
+
+def intro():
+    print("Oh no! After falling asleep on the train back home, you accidentally got off a stop at some sort of castle.")
+    introOptions()
 
 def secondFloor():
     print("You arrived at the second floor, and are greeted with three doors.")
