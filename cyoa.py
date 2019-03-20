@@ -23,7 +23,7 @@ def gameComplete():
         if tryAgain == "1":
             intro()
         elif tryAgain == "2":
-            break
+            exit()
         else:
             print("Bad input!")
             continue
@@ -78,7 +78,7 @@ def pokeCreature():
                 time.sleep(1)
                 global triedUnlocking
                 triedUnlocking = True
-                enterCastle().castleOptions()
+                castleOptions()
 
 def roomDeath():
     print("You should probably know from your instincts these guys don't take well to reasoning.")
@@ -88,6 +88,8 @@ def roomDeath():
 
 def unlockedRoom():
     print("You enter the unlocked room... but you're greeted to a big surprise!")
+    global flag
+    flag = True
     time.sleep(2)
     print("A portal that says... back to your home town! Just your luck!")
     time.sleep(2)
@@ -122,7 +124,7 @@ def rightAfterCafeteria():
                 option = input("What do you want to do? >> ")
                 if option == "1":
                     print("You give up and walk back to square one.")
-                    enterCastle().castleOptions()
+                    castleOptions()
                 elif option == "2":
                     print("You use your key to try and u1nlock it...")
                     time.sleep(3)
@@ -134,6 +136,25 @@ def rightAfterCafeteria():
                 else: 
                     print("Invalid option. Try again")
                     continue
+        else:
+            while True:
+                print("""
+                1. Go back to the way you came.
+                2. Use your key to unlock the door.""")
+                option = input("What do you want to do?? >> ")
+                if option == "1":
+                    print("You give up and walk back to square one.")
+                    time.sleep(1)
+                    castleOptions()
+                elif option == "2":
+                    print("You don't have a key to unlock it.")
+                    time.sleep(1)
+                    continue
+                else:
+                    print("Invalid input. Try again.")
+                    time.sleep(1)
+                    continue
+
 
 
 def sneakyBeakyLike():
@@ -173,7 +194,6 @@ def cafeteriaOptions():
             print("Wrong input. Try again.")
             continue
 
-
 def rightEdge():
     print("You decide to sneak on the right.")
     time.sleep(1)
@@ -199,13 +219,157 @@ def rightEdgeOptions():
             print("Wrong input, try again")
             continue
 
+def coffee():
+    time.sleep(1)
+    print("You try some coffee on the desk...")
+    time.sleep(2)
+    print("You don't like it, so you spit it out.")
+    time.sleep(2)
+    print("""
+    1. Clean it up
+    2. Just leave it""")
+    cleanUp = input("Clean up your mess? >> ")
+    if cleanUp == "1":
+        print("You clean up the mess. ")
+        time.sleep(1)
+        print("A janitor creature approaches you.")
+        time.sleep(1)
+        print("Janitor: Thanks for cleaning up that mess. I hate when people leave messes like that and don't clean it up!")
+        time.sleep(4)
+        breakRoom()
+    elif cleanUp == "2":
+        print("You leave it there like a slob.")
+        time.sleep(2)
+        print("A janitor creature approaches you. ")
+        time.sleep(1)
+        print("Janitor: HEY! YOU DIDN'T CLEAN UP YOUR MESS! COME HERE!")
+        time.sleep(3)
+        print("You try to outrun him, but you can't run faster than him.")
+        time.sleep(3)
+        print("He eats you, and you die!")
+        time.sleep(1)
+        deathAftermath()
+
+def creatureBrkRoom():
+    time.sleep(1)
+    print("Creature: Hello, human! What brings you here? ")
+    time.sleep(3)
+    print("You: I'm trying to get out of here.")
+    time.sleep(2)
+    print("Creature: I don't supposed you came off that train? After sleeping? You won't believe how many people tell us that before we kill them!")
+    time.sleep(3)
+    print("...")
+    time.sleep(1)
+    print("Creature: Ooops. I mean others. They do the killing. I don't like humans. ")
+    time.sleep(5)
+    print("You: Well, that's comforting, I guess...")
+    time.sleep(3)
+    print("That conversation was odd.")
+    breakRoom()
+
+def savage21():
+    print("You approach the shadowy figure with his back turned against the desk.")
+    time.sleep(4)
+    print("You: Uhhh, hello? Who is this? ")
+    time.sleep(3)
+    print("A familiar famous figure turns his chair around.")
+    time.sleep(3)
+    print("It's no one other than 21 Savage in the flesh!")
+    time.sleep(3)
+    print("You: Wh- you!?")
+    time.sleep(3)
+    print("21: Hey there, $&%^@. What's a lil kid doin in this castle? This a dangerous place.")
+    time.sleep(3)
+    print("You: Can we not swear? This is a school assignment.")
+    time.sleep(3)
+    print("21: My apologies, kid. But how the hell did you get in here? Dey gonna kill ya!")
+    time.sleep(4)
+    print("You: I accidentally took a one-way train here. I need to find my way home!")
+    time.sleep(3)
+    print("21: Aw, man, this the fifth time this week! And four of em didn't make it!")
+    time.sleep(3)
+    print("You: Aaaah!")
+    time.sleep(2)
+    print("21: Don't be scared, lil kid, I can see it in your eyes. You gonna make it out alive!")
+    time.sleep(3)
+    print("You: Really? You think so?")
+    time.sleep(3)
+    print("21: I dunno. I'm tryna be motivational here.")
+    time.sleep(3)
+    print("You: Well, that's flattering...")
+    time.sleep(2)
+    print("You: How did you end up in here? It's really odd seeing you out of all people in this room.")
+    time.sleep(4)
+    print("""21: Well, they was gonna send me back to the UK, but I ain't want that, so I ended up fleeing on the same train you took.
+    Luckily, the monstas recognized me, and now I live here. It's a real bad place, these monstas will find anyone and eat em alive! Tougher
+    than Zone 6! And all they feed me is proscuitto. That s**t stretchy as hell, I'm sick of it.""")
+    time.sleep(7)
+    print("You: Oh, so that's where you went. It doesn't seem good here, and besides, a lot of people miss you, dude.")
+    time.sleep(4)
+    print("21: I realize dat, but a life without fame is a lot more quiet, so here I am.")
+    time.sleep(4)
+    print("You: That makes sense... so, do you know how to get out of this place?")
+    time.sleep(4)
+    print("21: Hell yeah I do. But it ain't gonna be easy. You gotta get to the top floor of dis castle.")
+    print("21: There are two floors to go afta this one. Once you at the top there should be a portal back to the train station.")
+    print("21: On your way, you gonna meet some nasty creatures, tho. I advise you watch yo back!")
+    time.sleep(20)
+    print("You: Oh no, what kind of creatures?")
+    time.sleep(4)
+    print("21: I cannot say, it's too violent. Mr. Shaft will take marks off.")
+    time.sleep(4)
+    print("Ugh, fine. I'll find out when the time comes but I'm sure it won't be pretty.")
+    time.sleep(4)
+    print("You: 21: The door behind me is the way to the second floor. It's a hospital, fulla sick creatures.")
+    time.sleep(4)
+    print("You: ...That's kind of sad. What type of diseases?")
+    time.sleep(4)
+    print("21: Mostly scurvy. They don't eat no fruit. I been tryna get them to take supplements but they don't know what dat is.")
+    print("21: Regardless, you gon have to find a special weapon to break down the barrier to floor three. It's in dat hospital.")
+    time.sleep(15)
+    print("You: Alright, thank you. ")
+    time.sleep(3)
+    print("21: Good luck on your travels, child, and I hope you make it back in one piece.")
+    time.sleep(4)
+    print("You: Didn't think I'd have someone say that to me, but thanks...")
+    breakAfterConversation()
+
+def breakRoom():
+    print("You're in the break room.")
+    time.sleep(1)
+    while True:
+        print("""
+        1. Talk to the shadowy figure
+        2. Talk to the friendly creature
+        3. Drink coffee""")
+        option = input("What do you want to do? >> ")
+        if option == "1":
+            savage21()
+        elif option == "2":
+            creatureBrkRoom()
+        elif option == "3":
+            coffee()
+        else:
+            print("Invalid option. Try again.")
+            continue
+
 def leftEdge():
-    print("huifeie")
+    print("You decide to sneak left.")
+    time.sleep(1)
+    print("You come across a door. You look through, and it's a few creatures having a business meeting.")
+    time.sleep(3)
+    print("Best not disturb them...")
+    time.sleep(2)
+    print("You continue creeping to the left... and you come across a break room.")
+    time.sleep(3)
+    print("The door is unlocked, so you decide to open it. There's a friendly creature sitting there, and a shadowy figure in the chair at a desk.")
+    breakRoom()
 
 def tryLeaving():
     print("You try to open the castle door behind you quietly.")
     time.sleep(3)
     print("It doesn't budge. You're stuck.")
+    time.sleep(2)
     castleOptions()
 
 def walkMiddle():
@@ -229,14 +393,16 @@ def enterCastle():
     castleOptions()
 
 def castleOptions():
-    if "Key" not in inventory:
+    global triedUnlocking
+    triedUnlocking = False
+    if "Key" not in inventory and triedUnlocking is False:
         while True:
             print("""
             1. Go back out of the castle.
             2. Walk to the middle of the room and ignore your instincts.
             3. Creep around the right edge of the room.
             4. Creep around the left edge of the room.""")
-            option = input("What do you want to do?")
+            option = input("What do you want to do? >> ")
             if option == "1":
                 tryLeaving()
             elif option == "2":
@@ -283,7 +449,7 @@ def castleOptions():
             else:
                 print("Invalid input.")
                 continue
-    elif "Key" not in inventory:
+    elif "Key" not in inventory and flag is True:
         while True:
             print("""
             1. Go back out of the castle.
@@ -368,62 +534,7 @@ def secondFloor():
             continue
 
     
-def savage21():
-    print("21: Hey there, $&%^@. What's a lil kid doin in this castle? This a dangerous place.")
-    time.sleep(3)
-    print("You: Can we not swear? This is a school assignment.")
-    time.sleep(3)
-    print("21: My apologies, kid. But how the hell did you get in here? Dey gonna kill ya!")
-    time.sleep(4)
-    print("You: I accidentally took a one-way train here. I need to find my way home!")
-    time.sleep(3)
-    print("21: Aw, man, this the fifth time this week! And four of em didn't make it!")
-    time.sleep(3)
-    print("You: Aaaah!")
-    time.sleep(2)
-    print("21: Don't be scared, lil kid, I can see it in your eyes. You gonna make it out alive!")
-    time.sleep(3)
-    print("You: Really? You think so?")
-    time.sleep(3)
-    print("21: I dunno. I'm tryna be motivational here.")
-    time.sleep(3)
-    print("You: Well, that's flattering...")
-    time.sleep(2)
-    print("You: How did you end up in here? It's really odd seeing you out of all people in this room.")
-    time.sleep(4)
-    print("""21: Well, they was gonna send me back to the UK, but I ain't want that, so I ended up fleeing on the same train you took.
-    Luckily, the monstas recognized me, and now I live here. It's a real bad place, these monstas will find anyone and eat em alive! Tougher
-    than Zone 6! And all they feed me is proscuitto. That s**t stretchy as hell, I'm sick of it.""")
-    time.sleep(7)
-    print("You: Oh, so that's where you went. It doesn't seem good here, and besides, a lot of people miss you, dude.")
-    time.sleep(4)
-    print("21: I realize dat, but a life without fame is a lot more quiet, so here I am.")
-    time.sleep(4)
-    print("You: That makes sense... so, do you know how to get out of this place?")
-    time.sleep(4)
-    print("21: Hell yeah I do. But it ain't gonna be easy. You gotta get to the top floor of dis castle.")
-    print("21: There are two floors to go afta this one. Once you at the top there should be a portal back to the train station.")
-    print("21: On your way, you gonna meet some nasty creatures, tho. I advise you watch yo back!")
-    time.sleep(20)
-    print("You: Oh no, what kind of creatures?")
-    time.sleep(4)
-    print("21: I cannot say, it's too violent. Mr. Shaft will take marks off.")
-    time.sleep(4)
-    print("Ugh, fine. I'll find out when the time comes but I'm sure it won't be pretty.")
-    time.sleep(4)
-    print("You: 21: The door behind me is the way to the second floor. It's a hospital, fulla sick creatures.")
-    time.sleep(4)
-    print("You: Aww, that's kind of sad. What type of diseases?")
-    time.sleep(4)
-    print("21: Mostly scurvy. They don't eat no fruit. I been tryna get them to take supplements but they don't know what dat is.")
-    print("21: Regardless, you gon have to find a special weapon to break down the barrier to floor three. It's in dat hospital.")
-    time.sleep(15)
-    print("You: Alright, thank you. ")
-    time.sleep(3)
-    print("21: Good luck on your travels, child, and I hope you make it back in one piece.")
-    time.sleep(4)
-    print("You: Didn't think I'd have someone say that to me, but thanks...")
-    breakAfterConversation()
+
     
 def proceedToFirst():
     print("You touch the doorknob to the next floor. However, you're interrupted.")
