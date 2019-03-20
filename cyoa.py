@@ -124,7 +124,7 @@ def rightAfterCafeteria():
                     print("You give up and walk back to square one.")
                     enterCastle().castleOptions()
                 elif option == "2":
-                    print("You use your key to try and unlock it...")
+                    print("You use your key to try and u1nlock it...")
                     time.sleep(3)
                     print("Voila! It works!")
                     unlockedRoom()
@@ -184,7 +184,7 @@ def rightEdge():
     time.sleep(5)
     print("Do you want to try and enter?")
     rightEdgeOptions()
-    
+
 def rightEdgeOptions():
     while True:
         print("""
@@ -284,7 +284,7 @@ def castleOptions():
             else:
                 print("Invalid input.")
                 continue
-    elif triedUnlocking is True:
+    elif "Key" not in inventory and triedUnlocking is True:
         while True:
             print("""
             1. Go back out of the castle.
