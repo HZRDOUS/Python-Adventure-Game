@@ -250,6 +250,65 @@ def coffee():
         time.sleep(1)
         deathAftermath()
 
+def secondFloor():
+    print("You arrived at the second floor, and are greeted with three doors.")
+    time.sleep(4)
+    print("21: The hospital should be somewhere in deez three doors. Let's go explorin'.")
+    time.sleep(4)
+    while True:
+        print("""
+    1. First Door
+    2. Second Door
+    3. Third Door""")
+        door = input("Which door do you want to go through? >>")
+        if door == "1":
+            secondFloorDoor1()
+        elif door == "2":
+            secondFloorDoor2()
+        elif door == "3":
+            hospital()
+        else:
+            print("Invalid option.")
+            continue
+
+def proceedToFirst():
+    print("You touch the doorknob to the next floor. However, you're interrupted.")
+    time.sleep(3)
+    print("21: Hey, kid...")
+    time.sleep(2)
+    print("You: Uhm... yes??")
+    time.sleep(3)
+    print("21: Let me come with you. I be damned if another person die in this place.")
+    time.sleep(3)
+    print("You: But didn't you say you liked it here?")
+    time.sleep(3)
+    print("21: I do, but as time goes by I'm gonna get lazier. If I ever do need to go back, I won't be on my grind as much. You feel?")
+    time.sleep(4)
+    print("21: And besides, sometimes these creatures is annoying. I don't know how long imma take that.")
+    time.sleep(4)
+    print("You: Well, if you really want to come, I guess you can.")
+    time.sleep(3)
+    print("21: Good, I woulda finna went anyway, but I'm glad you fine with it.")
+    time.sleep(3)
+    print("21: We gonna make a great team together, kid.")
+    print("But first, tell me somethin, what's your name?")
+    while True:
+        global name
+        name = str(input("Enter your name. >>"))
+        confirm = str(input(f"Is {name} your name?"))
+        if confirm in ("Yes"):
+            print(f"{name}: My name is {name}. Pleasure to meet you.")
+            time.sleep(4)
+            print("21: Hell yeah, you bet it is. You already know me.")
+            print("21: So is we on our way now we got everything settled?")
+            time.sleep(6)
+            print(f"{name}: Yep... let's get out of here.")
+            time.sleep(4)
+            print("With your newfound team member, you open the door to the next floor with confidence in getting out of this place.")
+            secondFloor()
+        else:
+            continue
+
 def creatureBrkRoom():
     time.sleep(1)
     print("Creature: Hello, human! What brings you here? ")
@@ -266,6 +325,17 @@ def creatureBrkRoom():
     time.sleep(3)
     print("That conversation was odd.")
     breakRoom()
+
+def breakAfterConversation():
+    print("""You're in the break room.
+    1. Proceed onward.""")
+    while True:
+        option = int(input("What do you want to do? >>"))
+        if option == 1:
+            proceedToFirst()
+        else:
+            print("Invalid option, try again.")
+            continue
 
 def savage21():
     print("You approach the shadowy figure with his back turned against the desk.")
@@ -511,79 +581,5 @@ def introOptions():
 def intro():
     print("Oh no! After falling asleep on the train back home, you accidentally got off a stop at some sort of castle.")
     introOptions()
-
-def secondFloor():
-    print("You arrived at the second floor, and are greeted with three doors.")
-    time.sleep(4)
-    print("21: The hospital should be somewhere in deez three doors. Let's go explorin'.")
-    time.sleep(4)
-    while True:
-        print("""
-    1. First Door
-    2. Second Door
-    3. Third Door""")
-        door = input("Which door do you want to go through? >>")
-        if door == "1":
-            secondFloorDoor1()
-        elif door == "2":
-            secondFloorDoor2()
-        elif door == "3":
-            hospital()
-        else:
-            print("Invalid option.")
-            continue
-
-    
-
-    
-def proceedToFirst():
-    print("You touch the doorknob to the next floor. However, you're interrupted.")
-    time.sleep(3)
-    print("21: Hey, kid...")
-    time.sleep(2)
-    print("You: Uhm... yes??")
-    time.sleep(3)
-    print("21: Let me come with you. I be damned if another person die in this place.")
-    time.sleep(3)
-    print("You: But didn't you say you liked it here?")
-    time.sleep(3)
-    print("21: I do, but as time goes by I'm gonna get lazier. If I ever do need to go back, I won't be on my grind as much. You feel?")
-    time.sleep(4)
-    print("21: And besides, sometimes these creatures is annoying. I don't know how long imma take that.")
-    time.sleep(4)
-    print("You: Well, if you really want to come, I guess you can.")
-    time.sleep(3)
-    print("21: Good, I woulda finna went anyway, but I'm glad you fine with it.")
-    time.sleep(3)
-    print("21: We gonna make a great team together, kid.")
-    print("But first, tell me somethin, what's your name?")
-    while True:
-        global name
-        name = str(input("Enter your name. >>"))
-        confirm = str(input(f"Is {name} your name?"))
-        if confirm in ("Yes"):
-            print(f"{name}: My name is {name}. Pleasure to meet you.")
-            time.sleep(4)
-            print("21: Hell yeah, you bet it is. You already know me.")
-            print("21: So is we on our way now we got everything settled?")
-            time.sleep(8)
-            print(f"{name}: Yep... let's get out of here.")
-            time.sleep(4)
-            print("With your newfound team member, you open the door to the next floor with confidence in getting out of this place.")
-            secondFloor()
-        else:
-            continue
-
-
-def breakAfterConversation():
-    print("""You're in the break room.
-    1. Proceed onward.""")
-    while True:
-        option = int(input("What do you want to do? >>"))
-        if option == 1:
-            proceedToFirst()
-        else:
-            print("Invalid option, try again.")
-            continue
             
 intro()
