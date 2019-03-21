@@ -374,7 +374,7 @@ def inspectPlant():
         deathAftermath()
 
 def securityGuard():
-    
+    print("blheg")
 
 def hospitalOptions():
     while True:
