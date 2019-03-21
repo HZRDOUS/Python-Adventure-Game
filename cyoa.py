@@ -3,6 +3,8 @@ import time
 global name
 name = ""
 inventory = []
+global plantCount
+plantCount = 0
 
 def printOutInventory():
     global inventory
@@ -336,13 +338,65 @@ def secondFloorDoor2Options():
             time.sleep(1)
             continue
 
-def hospital():
-
 def secondFloor():
     print("You arrived at the second floor, and are greeted with three doors.")
     time.sleep(4)
     print("21: The hospital should be somewhere in deez three doors. Let's go explorin'.")
     secondFloorOptions()
+
+def hopsital():
+    print("You enter the hospital... it's a waiting room and you see a bunch of sick creatures ")
+    time.sleep(3)
+    print("21: Stupid thangs ain't cook they meat properly.")
+    time.sleep(3)
+    print(f"{name}: Can't say I'm too surprised...")
+    time.sleep(3)
+    print("21: Bull#$*^ aside, the room the rocket launcher is hidden in is somewhere in room 199. Let's head there.")
+    time.sleep(3)
+    hospitalOptions()
+
+def inspectPlant():
+    time.sleep(1)
+    global plantCount
+    plantCount += 1
+    if plantCount < 2:
+        print("You touch the plant. Neat plant- it's fake though.")
+        hospitalOptions()
+    else:
+        print("You touch the pla-")
+        time.sleep(0.5)
+        print("Security Guard: Hey! You! You'll regret touching that plant with your filthy hands!")
+        time.sleep(3)
+        print("Before you can think, he hits you over the head with a baton...")
+        time.sleep(4)
+        print("You're dead. They don't play about their plants.")
+        time.sleep(2)
+        deathAftermath()
+
+def securityGuard():
+    
+
+def hospitalOptions():
+    while True:
+        print("""
+        1. Inspect plant
+        2. Talk to security guard
+        3. Go to room 199""")
+        option = input("What do you want to do? >> ")
+        if option == "1":
+            inspectPlant()
+        elif option == "2":
+            securityGuard()
+        elif option == "3":
+            room199()
+        elif option == "44":
+            printOutInventory()
+            continue
+        else:
+            print("Invalid input. Try again.")
+            time.sleep(1)
+            continue
+
 
 def secondFloorOptions():
     time.sleep(2)
