@@ -111,7 +111,6 @@ def unlockedRoom():
             print("Invalid option.")
             continue
         
-
 def rightAfterCafeteria():
     print("You continue going left, and you approach a door.")
     print("You try opening it- but it's locked. What do you wanna do?")
@@ -250,11 +249,103 @@ def coffee():
         time.sleep(1)
         deathAftermath()
 
+def searchDesk():
+    print("You look through the desk...")
+    time.sleep(2)
+    print("You find a pack of proscuitto.")
+    time.sleep(1)
+    print("\"Proscuitto\" has been added to your inventory.")
+    inventory.append("Proscuitto")
+    time.sleep(2)
+    secondFloorDoor1Options()
+
+def inspectBookshelf():
+    print("There's a book about cooking with proscuitto in here...")
+    time.sleep(3)
+    print("21: Dem little s&#ts love that stuff... I dunno why...")
+    time.sleep(3)
+    print("Language!")
+    secondFloorDoor1Options()
+
+def secondFloorDoor1():
+    print("It's a library like room...")
+    secondFloorDoor1Options()
+
+def secondFloorDoor1Options():
+    while True:
+        print("""
+        1. Inspect bookshelf
+        2. Search desk
+        3. Leave""")
+        option = input("What would you like to do? >> ")
+        if option == "1":
+            inspectBookshelf()
+        elif option == "2":
+            searchDesk()
+        elif option == "3":
+            print("You decide to leave the room.")
+            time.sleep(2)
+            secondFloorOptions()
+        else:
+            print("Invalid input. Try again.")
+            time.sleep(1)
+            continue
+
+def admirePaintings():
+    print("It's a painting of of a cow, crudely drawn too.")
+    time.sleep(2)
+    print("21: Yeah, these dudes have no idea what true art is.")
+    time.sleep(2)
+    print(f"{name}: Yeah, I can see. The black and white spots are mixed up. ")
+    time.sleep(2)
+    print("21: They tried bringing a chocolate cow over here to get chocolate milk once. ")
+    time.sleep(2)
+    print(f"{name}: That must have been disappointing for them.")
+    time.sleep(3)
+    print("21: You could imagine how I feel, I wanted some chocolate milk myself.")
+    time.sleep(3)
+    print(f"{name}: ...")
+    secondFloorDoor2Options()
+
+def admireStatue():
+    print("It's a poorly-made statue of David, but with a creature head on it.")
+    time.sleep(3)
+    print("You think to yourself, you did not need to look closer at that today...")
+    secondFloorDoor2Options()
+
+def secondFloorDoor2():
+    print("A second room... very artsy.")
+    time.sleep(2)
+    secondFloorDoor2Options()
+
+def secondFloorDoor2Options():
+    while True:
+        print("""
+        1. Admire paintings
+        2. Admire statue
+        3. Leave""")
+        option = input("What would you like to do? >> ")
+        if option == "1":
+            admirePaintings()
+        elif option == "2":
+            admireStatue()
+        elif option == "3":
+            secondFloorOptions()
+        else:
+            print("Invalid input. Try again.")
+            time.sleep(1)
+            continue
+
+def hospital():
+
 def secondFloor():
     print("You arrived at the second floor, and are greeted with three doors.")
     time.sleep(4)
     print("21: The hospital should be somewhere in deez three doors. Let's go explorin'.")
-    time.sleep(4)
+    secondFloorOptions()
+
+def secondFloorOptions():
+    time.sleep(2)
     while True:
         print("""
     1. First Door
