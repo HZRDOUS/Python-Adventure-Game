@@ -254,15 +254,15 @@ def coffee():
 def searchDesk():
     print("You look through the desk...")
     time.sleep(2)
-    print("You find a pack of proscuitto.")
+    print("You find a pack of porscuittoo.")
     time.sleep(1)
-    print("\"Proscuitto\" has been added to your inventory.")
-    inventory.append("Proscuitto")
+    print("\"Porscuitto\" has been added to your inventory.")
+    inventory.append("Porscuitto")
     time.sleep(2)
     secondFloorDoor1Options()
 
 def inspectBookshelf():
-    print("There's a book about cooking with proscuitto in here...")
+    print("There's a book about cooking with porscuitto in here...")
     time.sleep(3)
     print("21: Dem little s&#ts love that stuff... I dunno why...")
     time.sleep(3)
@@ -374,28 +374,106 @@ def inspectPlant():
         deathAftermath()
 
 def securityGuard():
-    print("blheg")
+    print("You talk to the security guard.")
+    time.sleep(2)
+    print("Secuirty Guard: Ach! Humans! We have enough sickness here, get out!")
+    time.sleep(3)
+    print("21: Why the hell are you talkin to this guy? He gonna kill us!")
+    time.sleep(3)
+    print("Security Guard: Nah. We don't like police brutality here. We leave the killing up to the random monsters, like the janitors.")
+    time.sleep(4)
+    print(f"{name}: Odd. More civilized than actual human beings.")
+    if "Porscuitto" in inventory:
+        securityGuardOptions()
+    else:
+        hospitalOptions()
 
-def hospitalOptions():
+def bribe():
+    print("You give the security guard the porscuitto.")
+    time.sleep(2)
+    print(f"{name}: How about you do us a favor for this?")
+    time.sleep(3)
+    print("His ears perk up.")
+    time.sleep(1)
+    print("Security Guard: Oh. For that? ")
+    time.sleep(1)
+    print("Security Guard: I don't know... I can't take that stuff from h-")
+    time.sleep(1)
+    print("Security Guard: You know what? Sure. Why not. Gimmegimmegimme.")
+    time.sleep(3)
+    print("21: No, not yet. You gonna get us outta here.")
+    time.sleep(3)
+    print("Security Guard: But- bu-")
+    time.sleep(1)
+    print("21: No buts, monsta. You don't get dis meat if you don't help us.")
+    time.sleep(3)
+    print("...")
+    time.sleep(2)
+    print("Security Guard: Fine... follow me.")
+    time.sleep(4)
+    print("The security guard brings you to the hospital's supply closet.")
+    time.sleep(4)
+    print("Security Guard: Alright... here it is. Can I have")
+
+def securityGuardOptions():
+    print("21, whispering: (Psst! You can bribe dis guy!)")
+    time.sleep(2)
     while True:
         print("""
-        1. Inspect plant
-        2. Talk to security guard
-        3. Go to room 199""")
+        1. Bribe guard with porscuitto
+        2. Don't. Too easy""")
+        time.sleep(1)
         option = input("What do you want to do? >> ")
         if option == "1":
-            inspectPlant()
+            bribe()
         elif option == "2":
-            securityGuard()
-        elif option == "3":
-            room199()
-        elif option == "44":
-            printOutInventory()
-            continue
-        else:
-            print("Invalid input. Try again.")
-            time.sleep(1)
-            continue
+            print("Alright, your choice!")
+            time.sleep(2)
+            hospitalOptions()
+
+def hospitalOptions():
+    if "Rocket Launcher" not in inventory:
+        while True:
+            print("""
+            1. Inspect plant
+            2. Talk to security guard
+            3. Go to room 199""")
+            option = input("What do you want to do? >> ")
+            if option == "1":
+                inspectPlant()
+            elif option == "2":
+                securityGuard()
+            elif option == "3":
+                room199()
+            elif option == "44":
+                printOutInventory()
+                continue
+            else:
+                print("Invalid input. Try again.")
+                time.sleep(1)
+                continue
+    else:
+        while True:
+            print("""
+            1. Inspect plant
+            2. Talk to security guard
+            3. Go to room 199""")
+            option = input("What do you want to do? >> ")
+            if option == "1":
+                inspectPlant()
+            elif option == "2":
+                securityGuard()
+            elif option == "3":
+                room199()
+            elif option == "4":
+                hallway12()
+            elif option == "44":
+                printOutInventory()
+                continue
+            else:
+                print("Invalid input. Try again.")
+                time.sleep(1)
+                continue
 
 
 def secondFloorOptions():
@@ -517,7 +595,7 @@ def savage21():
     time.sleep(4)
     print("""21: Well, they was gonna send me back to the UK, but I ain't want that, so I ended up fleeing on the same train you took.
     Luckily, the monstas recognized me, and now I live here. It's a real bad place, these monstas will find anyone and eat em alive! Tougher
-    than Zone 6! And all they feed me is proscuitto. That s**t stretchy as hell, I'm sick of it.""")
+    than Zone 6! And all they feed me is porscuitto. That s**t stretchy as hell, I'm sick of it.""")
     time.sleep(7)
     print("You: Oh, so that's where you went. It doesn't seem good here, and besides, a lot of people miss you, dude.")
     time.sleep(4)
