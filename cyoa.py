@@ -1,11 +1,15 @@
 import time
 from random import randint
+import msvcrt as m
 
 global name
 name = ""
 inventory = []
 global plantCount
 plantCount = 0
+
+def wait():
+    m.getch()
 
 def printOutInventory():
     global inventory
@@ -478,6 +482,19 @@ def room199():
     print("The rocket launcher has been added to your inventory.")
     hospitalOptions()
 
+def finalBossWarning():
+    print("""
+    WARNING: Final boss time! 
+    After the dialogue is finished a timer will start.
+    You will have FIVE (5) minutes to find the right path and defeat the boss.
+    You will have THREE (3) chances to do so.
+    Time and lives will be printed every retry.
+    If you run out of time or lives... you need to redo everything!
+    """)
+    time.sleep(3)
+    print("Press any key to continue.")
+    wait()
+
 def hallway12():
     print("21: Alright, we here. Stand back.")
     time.sleep(4)
@@ -492,7 +509,7 @@ def hallway12():
     print("That was less exciting, especially just in text form.")
     time.sleep(2)
     print("You both go up the staircase and you're met with a surprise...")
-    finalBossRoom()
+    finalBossWarning()
 
 def examineCreatures():
     randNum = randint(1,2)
