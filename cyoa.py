@@ -1,4 +1,5 @@
 import time
+from random import randint
 
 global name
 name = ""
@@ -486,7 +487,58 @@ def hallway12():
     time.sleep(3)
     print("You stand back, and with a quick fire of the rocket, the door in front of you blows open, revealing a stairway")
     time.sleep(4)
-    print("")
+    print("BOOM!")
+    time.sleep(2)
+    print("That was less exciting, especially just in text form.")
+    time.sleep(2)
+    print("You both go up the staircase and you're met with a surprise...")
+    finalBossRoom()
+
+def examineCreatures():
+    randNum = randint(1,2)
+    if randNum == 1:
+        print("There are some sick creatures in this waiting room.")
+        time.sleep(3)
+        print("Creature 1: I didn't know you couldn't eat steak raw!")
+        time.sleep(3)
+        print("Creature 2: That wasn't steak, that was pig.")
+        time.sleep(3)
+        print("Creature 3: I think you mean pork?")
+        time.sleep(3)
+        print("Creature 2: Shut up, I know what I'm talking about.")
+        hospitalOptions()
+    elif randNum == 2:
+        print("There are some sick creatures in this waiting room.")
+        time.sleep(3)
+        print("Creature 1: What's up with you?")
+        time.sleep(3)
+        print("Creature 2: I ate raw chicken...")
+        time.sleep(3)
+        print("Creature 1: You're dumb, you're not supposed to eat raw chicken, dude.")
+        time.sleep(3)
+        print("Creature 2: Oh really? Then why are you here?")
+        time.sleep(3)
+        print("Creature 1: I have an ear infection.")
+        time.sleep(3)
+        print("Creature 2: Oh.")
+        time.sleep(1)
+        hospitalOptions()
+
+def hospital():
+    print("You arrive at the hospital. There are a lot of sick creatures...")
+    time.sleep(3)
+    print("21: Aight, do you know why we here?")
+    time.sleep(3)
+    print(f"{name}: No, not really. Why?")
+    time.sleep(3)
+    print("21: There's a rocket launcher somewhere in here. We can use that to get out. First to get to the next floor, and second if we need to defend ourselfs.")
+    time.sleep(6)
+    print("21: It should be in dat room 199. I know a guy who's sick right now and always keeps one, we can take it from him.")
+    time.sleep(6)
+    print(f"{name}: Alright... sounds good I guess.")
+    time.sleep(6)
+    print("Find the rocket launcher.")
+    hospitalOptions()
 
 def hospitalOptions():
     if "Rocket Launcher" not in inventory:
