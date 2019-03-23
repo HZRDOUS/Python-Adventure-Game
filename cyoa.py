@@ -1,6 +1,7 @@
 import time
 from random import randint
 import msvcrt as m
+import datetime
 
 global name
 name = ""
@@ -482,6 +483,34 @@ def room199():
     print("The rocket launcher has been added to your inventory.")
     hospitalOptions()
 
+def getElapsedTimeMinutes():
+    global startTime
+    
+    currentTime = datetime.datetime.now()
+    elapsedTime = datetime.datetime(1, 1, 1) + abs(startTime - currentTime)
+    return elapsedTime.minute
+
+global liveCount
+liveCount = 3
+
+def bossFight():
+    global liveCount
+    print(liveCount)
+    time.sleep(1)
+    while True:
+        print("""
+        1. Shoot it right now!
+        2. Run for safety!""")
+        option = input("What do you want to do? >>")
+        if option == "1":
+            shootIt()
+        elif option == "2":
+            runForSafety()
+        else:
+            print("Invalid input. Try again.")
+            continue
+    
+
 def finalBossRoom():
     print("You arrive at the room. It's a red room with very sophisticated furnishings, red carpet, red drapes, and brown-red staircases on both sides, both leading to a landing.")
     wait()
@@ -532,17 +561,20 @@ def finalBossRoom():
     print("Crea-tur: Good! Because I'm pretty sure we can't have sugar! ")
     wait()
     print("21: (Hey, kid, we need to kill dis monsta! Do you got a plan?")
+    wait()
+    print(f"{name}: Yeah, uhhh...")
+    wait()
+    bossFight()
 
 def finalBossWarning():
     print("""
     WARNING: Final boss time! 
-    After the dialogue is finished a timer will start.
-    You will have FIVE (5) minutes to find the right path and defeat the boss.
-    You will have THREE (3) chances to do so.
-    Time and lives will be printed every retry.
-    If you run out of time or lives... you need to redo everything!
+    You will have THREE (3) chances to try and defeat the boss.
+    TLives will be printed every retry.
+    Some options might be random and in the hands of fate... so be careful of that!
+    If you run out of lives... you need to redo the whole program!
     """)
-    wait()
+    time.sleep(1)
     print("Press any key to continue.")
     wait()
     finalBossRoom()
@@ -561,6 +593,7 @@ def hallway12():
     print("That was less exciting, especially just in text form.")
     wait()
     print("You both go up the staircase and you're met with a surprise...")
+    inventory.remove("Rocket")
     finalBossWarning()
 
 def examineCreatures():
