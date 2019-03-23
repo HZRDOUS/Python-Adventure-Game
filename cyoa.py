@@ -220,7 +220,7 @@ def rightEdgeOptions():
         if option == "1":
             cafeteriaOptions()
         elif option == "2":
-            continueOn()
+            rightAfterCafeteria()
         else:
             print("Wrong input, try again")
             continue
@@ -511,7 +511,27 @@ def finalBossRoom():
     wait()
     print("21: Oh no, it's her! I shoulda known that broad was gonna pop up!")
     wait()
-    print("")
+    print(f"{name}: What? Who?")
+    wait()
+    print("21: She the general of these creatures! Her name's Crea-tur!")
+    wait()
+    print(f"{name}: Oh no, this can't be good at all.")
+    wait()
+    print("Crea-tur: Hey you, humans! What the hell are you still doing here!? Don'tcha know it's DANGEROUS to be intruders in a place like this?")
+    wait()
+    print("The creature takes a swipe at you both, and you run to the side.")
+    wait()
+    print("21: We finished stayin here, you $*@&(! We finna go back home to the human world!")
+    wait()
+    print("Crea-tur: Awww, but what are the other creatures gonna eat?")
+    wait()
+    print("The creature takes another swipe at you both, but you dodge it!")
+    wait()
+    print("21: I dunno! But this one you on gonna be eatin rockets! And not the candy!")
+    wait()
+    print("Crea-tur: Good! Because I'm pretty sure we can't have sugar! ")
+    wait()
+    print("21: (Hey, kid, we need to kill dis monsta! Do you got a plan?")
 
 def finalBossWarning():
     print("""
