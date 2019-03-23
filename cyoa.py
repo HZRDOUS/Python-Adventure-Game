@@ -413,7 +413,30 @@ def bribe():
     time.sleep(4)
     print("The security guard brings you to the hospital's supply closet.")
     time.sleep(4)
-    print("Security Guard: Alright... here it is. Can I have")
+    print("Security Guard: Alright... here it is. Can I have it now?")
+    time.sleep(3)
+    print(f"{name}: Hold on, how do we get home with this?")
+    time.sleep(3)
+    print("Security Guard: Look in the mop bucket.")
+    time.sleep(3)
+    print("You look inside the mop bucket- it's a portal.")
+    time.sleep(4)
+    print("21: What? Why you guys have dis?")
+    time.sleep(3)
+    print("Security Guard: I dunno, in case someone bribes us?")
+    time.sleep(3)
+    print("How handy...")
+    time.sleep(2)
+    print("You hand the security guard his porscuitto. ")
+    time.sleep(3)
+    print("Security Guard: Good. Now never come back again, you two could have ended up in biiig trouble!")
+    time.sleep(3)
+    print("21: Aight, we get it, we gonna leave now...")
+    time.sleep(4)
+    print("You both hop into the bucket one at at a time. After a short ride through a bunch of green nothing...")
+    time.sleep(3)
+    print("You're both back home!")
+    gameComplete()
 
 def securityGuardOptions():
     print("21, whispering: (Psst! You can bribe dis guy!)")
@@ -431,6 +454,40 @@ def securityGuardOptions():
             time.sleep(2)
             hospitalOptions()
 
+def room199():
+    time.sleep(2)
+    print("You are on your way to room 199. When you get there, there's a sick creature in the bed.")
+    time.sleep(3)
+    print("Creature: I should have never cooked that chicken medium rare...")
+    time.sleep(3)
+    print(f"{name}: Wow, they are just that stupid, aren't they?")
+    time.sleep(4)
+    print("21 was busy getting the rocket launcher out of under the bed.")
+    time.sleep(3)
+    print("Creature: Screw you, human! That was my secret weapon!")
+    time.sleep(3)
+    print("21: For what?")
+    time.sleep(3)
+    inventory.append("Rocket Launcher")
+    inventory.append("Rocket" * 3)
+    print("Creature: Uhh... I dunno!")
+    time.sleep(3)
+    print("21: Exactly. Let's get da hell out.")
+    time.sleep(3)
+    print("The rocket launcher has been added to your inventory.")
+    hospitalOptions()
+
+def hallway12():
+    print("21: Alright, we here. Stand back.")
+    time.sleep(4)
+    print(f"{name}: What? Why?")
+    time.sleep(3)
+    print("21: I gotta blow tha door open")
+    time.sleep(3)
+    print("You stand back, and with a quick fire of the rocket, the door in front of you blows open, revealing a stairway")
+    time.sleep(4)
+    print("")
+
 def hospitalOptions():
     if "Rocket Launcher" not in inventory:
         while True:
@@ -444,6 +501,8 @@ def hospitalOptions():
             elif option == "2":
                 securityGuard()
             elif option == "3":
+                examineCreatures()
+            elif option == "4":
                 room199()
             elif option == "44":
                 printOutInventory()
@@ -457,15 +516,13 @@ def hospitalOptions():
             print("""
             1. Inspect plant
             2. Talk to security guard
-            3. Go to room 199""")
+            3. Leave""")
             option = input("What do you want to do? >> ")
             if option == "1":
                 inspectPlant()
             elif option == "2":
                 securityGuard()
             elif option == "3":
-                room199()
-            elif option == "4":
                 hallway12()
             elif option == "44":
                 printOutInventory()
