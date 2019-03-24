@@ -2,6 +2,7 @@ import time
 from random import randint
 import msvcrt as m
 import datetime
+import random
 
 global namePlayer
 namePlayer = ""
@@ -23,6 +24,21 @@ def printOutInventory():
 
 def gameComplete():
     print("Congrats! You completed the game! Would you like to quit, or try again?")
+    while True:
+        print("""
+        1. Replay
+        2. Quit""")
+        tryAgain = input("Try again?? >> ")
+        if tryAgain == "1":
+            intro()
+        elif tryAgain == "2":
+            exit()
+        else:
+            print("Bad input!")
+            continue
+
+def outOfLives():
+    print("You ran out of lives.")
     while True:
         print("""
         1. Replay
@@ -530,6 +546,31 @@ def matador():
     wait()
     lifeCheck()
 
+def finalRoom():
+    inventory.remove("Launcher")
+    print("With another fire of the rocket launcher, the door with the portal bursts open!")
+    wait()
+    print(f"{namePlayer}: Oh, hell yeah! Does this mean we can finally leave?")
+    wait()
+    print("21: @)$! dawg, what the hell you think?")
+    wait()
+    print("You both step inside the pitch-black room with the glowing green portal.")
+    wait()
+    print("21: Well, it's been nice workin with ya, kid. We finally get to leave dis place.")
+    wait()
+    print(f"{namePlayer}: Yeah... not many people can say they worked with someone famous to escape a... castle full of weird creatures.")
+    wait()
+    print("21: Exactly. Where dat with pride. Tell all your friends, also buy my new album, in stores now.")
+    wait()
+    print("21: Anyway, cya! I gotta go back to my mansion. Hopefully they ain't auction it off for tax purposes.")
+    wait()
+    print(f"{namePlayer}: Alright, cya later...")
+    wait()
+    print("21 made it through the portal... and after that, you step in too...")
+    wait()
+    print("And wouldn't you know it, you're back at the train station you came from!")
+    gameComplete()
+
 def funnyFace():
     print("21: Make a funny face? Dat might work...")
     wait()
@@ -542,8 +583,12 @@ def funnyFace():
     print("21: Hey! Dat worked! Let me shoot it!")
     wait()
     print("21 shoots the rocket launcher...")
+    inventory.remove("Rocket")
     wait()
     print("It hits the creature, and it works!")
+    monasterDefeat()
+
+def monasterDefeat():
     wait()
     print("21: Hell yeah! We done made it!")
     wait()
@@ -556,7 +601,9 @@ def funnyFace():
     print("Crea-tur: No! No! No! You'll pay! I hope you have FUN back at home, idiots!")
     wait()
     print("She stormed out of the room, presumably to the hospital.")
-    
+    wait()
+    print("21: Aight, now we got dat outta da way, lemme blow open dis door!")
+    finalRoom()
 
 def splitDistract():
     print("21: Dat's a good idea. Let's both split up, and go on the two different staircases.")
@@ -583,6 +630,40 @@ def splitDistract():
         else:
             print("Invalid input. Try again.")
             continue
+
+def splitAttack():
+    randomChoice = random.choice(['weak', 'carry'])
+    if randomChoice == "weak":
+        print("21: Lemme hand you the rocket launcher!")
+        wait()
+        print("You try to catch it- and you do- but...")
+        wait()
+        print("You're far too weak to hold it. You fall down, and can't get up, and...")
+        wait()
+        print("Get eaten by the monster!")
+        wait()
+        print("You're dead!")
+        wait()
+        lifeCheck()
+    elif randomChoice == "carry":
+        print("21: Lemme hand you the rocket launcher!")
+        wait()
+        print("You try to catch it- and you do- but...")
+        wait()
+        print("You are able to carry it!")
+        wait()
+        print("You decide the best course of action is to shoot the monster...")
+        wait()
+        print("And voila! A successful hit!")
+        monasterDefeat()
+
+def jumpOff():
+    print("You jump off the landing and onto the carpet below.")
+    wait()
+    print("The monster tries to chase you- but one of his claws snags on the carpet below him, and he trips and falls, knocking him out!")
+    wait()
+    print("21: Oh, dat's hilarious.")
+    monasterDefeat()
 
 def runUp():
     print("You are now at the landing.")
@@ -635,10 +716,10 @@ liveCount = 3
 
 def lifeCheck():
     global liveCount
+    liveCount -= 1
     if liveCount == 0:
-        end()
+        outOfLives()
     else:
-        liveCount -= 1
         bossFight()
 
 def bossFight():
@@ -668,7 +749,7 @@ def finalBossRoom():
     wait()
     print(f"{namePlayer}: Emergency?")
     wait()
-    print("21: Dere's a room at da top of that landing. We need to blow dat open too. Dere's a switch we gotta pull, it can either bring us back to dat train station you came from, or it can lead to a \"panic room\".")
+    print("21: Dere's a room at da top of that landing. We need to blow dat open too. It can either bring us back to dat train station you came from, or it's just a \"panic room\" for tha monstas when they scared.")
     wait()
     print(f"{namePlayer}: Well, let's get going then, what are we waiting for?")
     wait()
@@ -690,7 +771,7 @@ def finalBossRoom():
     wait()
     print("21: Oh no, it's her! I shoulda known that broad was gonna pop up!")
     wait()
-    print(f"{name}: What? Who?")
+    print(f"{namePlayer}: What? Who?")
     wait()
     print("21: She the general of these creatures! Her name's Crea-tur!")
     wait()
