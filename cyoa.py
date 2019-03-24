@@ -3,8 +3,8 @@ from random import randint
 import msvcrt as m
 import datetime
 
-global name
-name = ""
+global namePlayer
+namePlayer = ""
 inventory = []
 global plantCount
 plantCount = 0
@@ -304,15 +304,15 @@ def admirePaintings():
     wait()
     print("21: Yeah, these dudes have no idea what true art is.")
     wait()
-    print(f"{name}: Yeah, I can see. The black and white spots are mixed up. ")
+    print(f"{namePlayer}: Yeah, I can see. The black and white spots are mixed up. ")
     wait()
     print("21: They tried bringing a chocolate cow over here to get chocolate milk once. ")
     wait()
-    print(f"{name}: That must have been disappointing for them.")
+    print(f"{namePlayer}: That must have been disappointing for them.")
     wait()
     print("21: You could imagine how I feel, I wanted some chocolate milk myself.")
     wait()
-    print(f"{name}: ...")
+    print(f"{namePlayer}: ...")
     secondFloorDoor2Options()
 
 def admireStatue():
@@ -355,7 +355,7 @@ def hopsital():
     wait()
     print("21: Stupid thangs ain't cook they meat properly.")
     wait()
-    print(f"{name}: Can't say I'm too surprised...")
+    print(f"{namePlayer}: Can't say I'm too surprised...")
     wait()
     print("21: Bull#$*^ aside, the room the rocket launcher is hidden in is somewhere in room 199. Let's head there.")
     wait()
@@ -388,7 +388,7 @@ def securityGuard():
     wait()
     print("Security Guard: Nah. We don't like police brutality here. We leave the killing up to the random monsters, like the janitors.")
     wait()
-    print(f"{name}: Odd. More civilized than actual human beings.")
+    print(f"{namePlayer}: Odd. More civilized than actual human beings.")
     if "Porscuitto" in inventory:
         securityGuardOptions()
     else:
@@ -397,7 +397,7 @@ def securityGuard():
 def bribe():
     print("You give the security guard the porscuitto.")
     wait()
-    print(f"{name}: How about you do us a favor for this?")
+    print(f"{namePlayer}: How about you do us a favor for this?")
     wait()
     print("His ears perk up.")
     wait()
@@ -421,7 +421,7 @@ def bribe():
     wait()
     print("Security Guard: Alright... here it is. Can I have it now?")
     wait()
-    print(f"{name}: Hold on, how do we get home with this?")
+    print(f"{namePlayer}: Hold on, how do we get home with this?")
     wait()
     print("Security Guard: Look in the mop bucket.")
     wait()
@@ -466,7 +466,7 @@ def room199():
     wait()
     print("Creature: I should have never cooked that chicken medium rare...")
     wait()
-    print(f"{name}: Wow, they are just that stupid, aren't they?")
+    print(f"{namePlayer}: Wow, they are just that stupid, aren't they?")
     wait()
     print("21 was busy getting the rocket launcher out of under the bed.")
     wait()
@@ -483,15 +483,163 @@ def room199():
     print("The rocket launcher has been added to your inventory.")
     hospitalOptions()
 
-def getElapsedTimeMinutes():
-    global startTime
+def shootIt():
+    print("21 shoots the rocket-")
+    wait()
+    print("He misses.")
+    wait()
+    print("You both get mauled by the monster and die...")
+    wait()
+    lifeCheck()
+
+def runBackDown():
+    print("21: What? Dis plan better be good, why are we doin-")
+    wait()
+    print("Going back down was a bad move, you both got mauled.")
+    wait()
+    lifeCheck()
+
+def stupidMom():
+    print(f"{namePlayer}: Hey monster!")
+    wait()
+    print("The monster looks at you.")
+    wait()
+    print("Crea-tur: Oh? You have something to say to MY monster?")
+    wait()
+    print(f"{namePlayer}: Yeah! Your mother's stupid!")
+    wait()
+    print("...")
+    wait()
+    print("The monster eats you.")
+    wait()
+    print("Crea-tur: That's what you get for being immature! Ta-ta!")
+    wait()
+    print("You're dead!")
+    lifeCheck()
+
+def matador():
+    print("You rip off a piece of curtain and taunt it.")
+    wait()
+    print(f"{namePlayer}: Hey you! Come get this!")
+    wait()
+    print("The monster rushes towards you.")
+    wait()
+    print("You don't pull back in time and he hits you, killing you.")
+    wait()
+    print("You're dead!")
+    wait()
+    lifeCheck()
+
+def funnyFace():
+    print("21: Make a funny face? Dat might work...")
+    wait()
+    print("You make a funny face at the monster...")
+    wait()
+    print("...")
+    wait()
+    print("The monster actually starts to laugh!")
+    wait()
+    print("21: Hey! Dat worked! Let me shoot it!")
+    wait()
+    print("21 shoots the rocket launcher...")
+    wait()
+    print("It hits the creature, and it works!")
+    wait()
+    print("21: Hell yeah! We done made it!")
+    wait()
+    print(f"{namePlayer}: Wooooo hooo!")
+    wait()
+    print("Crea-tur: No! You killed my strongest one! Now I need to go back to using Jeff!")
+    wait()
+    print("21: Have fun wit dat. Jeff's in da hospital, he cooked his chicken medium rare.")
+    wait()
+    print("Crea-tur: No! No! No! You'll pay! I hope you have FUN back at home, idiots!")
+    wait()
+    print("She stormed out of the room, presumably to the hospital.")
     
-    currentTime = datetime.datetime.now()
-    elapsedTime = datetime.datetime(1, 1, 1) + abs(startTime - currentTime)
-    return elapsedTime.minute
+
+def splitDistract():
+    print("21: Dat's a good idea. Let's both split up, and go on the two different staircases.")
+    wait()
+    print("You go to the right staircase, and he goes to the left.")
+    wait()
+    print("Crea-tur: Aw, come on! Let me kill ya!")
+    wait()
+    print("What's next?")
+    while True:
+        print("""
+        1. Call its Mother stupid
+        2. Tear off a piece of red curtain and taunt it like a matador
+        3. Make a funny face at the creature""")
+        option = input("What do you want to do? >> ")
+        if option == "1":
+            stupidMom()
+        elif option == "2":
+            matador()
+        elif option == "3":
+            funnyFace()
+        elif option == "44":
+            printOutInventory()
+        else:
+            print("Invalid input. Try again.")
+            continue
+
+def runUp():
+    print("You are now at the landing.")
+    wait()
+    print("21: @($*, what do we do now?")
+    wait()
+    while True:
+        print("""
+        1. Split up and distract
+        2. Split up and attack
+        3. Jump off the landing and fight it head-on!""")
+        option = input("What do you want to do? >> ")
+        if option == "1":
+            splitDistract()
+        elif option == "2":
+            splitAttack()
+        elif option == "3":
+            jumpOff()
+        elif option == "44":
+            printOutInventory()
+        else:
+            print("Invalid option. Try again.")
+            continue
+
+def runForSafety():
+    print("Good call!")
+    wait()
+    print("You both ran to the bottom of the staircase.")
+    wait()
+    print("21: Quick! What do we do now?")
+    wait()
+    while True:
+        print("""
+        1. Run back down, you can get better aim there.
+        2. Run up the staircase to avoid the monster.""")
+        option = input("What do you want to do ? >> ")
+        if option == "1":
+            runBackDown()
+        elif option == "2":
+            runUp()
+        elif option == "44":
+            printOutInventory()
+        else:
+            print("Invalid input. Try again.")
+            continue
+        
 
 global liveCount
 liveCount = 3
+
+def lifeCheck():
+    global liveCount
+    if liveCount == 0:
+        end()
+    else:
+        liveCount -= 1
+        bossFight()
 
 def bossFight():
     global liveCount
@@ -506,6 +654,8 @@ def bossFight():
             shootIt()
         elif option == "2":
             runForSafety()
+        elif option == "44":
+            printOutInventory()
         else:
             print("Invalid input. Try again.")
             continue
@@ -516,17 +666,17 @@ def finalBossRoom():
     wait()
     print("21: Aight, here we is... the final room. It shouldn't be too hard. Dis room's locked up in case of emergency.")
     wait()
-    print(f"{name}: Emergency?")
+    print(f"{namePlayer}: Emergency?")
     wait()
     print("21: Dere's a room at da top of that landing. We need to blow dat open too. Dere's a switch we gotta pull, it can either bring us back to dat train station you came from, or it can lead to a \"panic room\".")
     wait()
-    print(f"{name}: Well, let's get going then, what are we waiting for?")
+    print(f"{namePlayer}: Well, let's get going then, what are we waiting for?")
     wait()
     print("21: Well, da thing is...")
     wait()
     print("21: Dis s$*%'s too quiet, dawg.")
     wait()
-    print(f"{name}: What? What do you mean, quiet? Is something going to happen?")
+    print(f"{namePlayer}: What? What do you mean, quiet? Is something going to happen?")
     wait()
     print("21: Maybe... ")
     wait()
@@ -534,7 +684,7 @@ def finalBossRoom():
     wait()
     print("Out of nowhere, the right wall starts cracking.")
     wait()
-    print(f"{name}: W-what's that???")
+    print(f"{namePlayer}: W-what's that???")
     wait()
     print("A huge creature breaks out of the wall, and someone's riding on top of it!")
     wait()
@@ -544,7 +694,7 @@ def finalBossRoom():
     wait()
     print("21: She the general of these creatures! Her name's Crea-tur!")
     wait()
-    print(f"{name}: Oh no, this can't be good at all.")
+    print(f"{namePlayer}: Oh no, this can't be good at all.")
     wait()
     print("Crea-tur: Hey you, humans! What the hell are you still doing here!? Don'tcha know it's DANGEROUS to be intruders in a place like this?")
     wait()
@@ -562,7 +712,7 @@ def finalBossRoom():
     wait()
     print("21: (Hey, kid, we need to kill dis monsta! Do you got a plan?")
     wait()
-    print(f"{name}: Yeah, uhhh...")
+    print(f"{namePlayer}: Yeah, uhhh...")
     wait()
     bossFight()
 
@@ -582,7 +732,7 @@ def finalBossWarning():
 def hallway12():
     print("21: Alright, we here. Stand back.")
     wait()
-    print(f"{name}: What? Why?")
+    print(f"{namePlayer}: What? Why?")
     wait()
     print("21: I gotta blow tha door open")
     wait()
@@ -631,13 +781,13 @@ def hospital():
     wait()
     print("21: Aight, do you know why we here?")
     wait()
-    print(f"{name}: No, not really. Why?")
+    print(f"{namePlayer}: No, not really. Why?")
     wait()
     print("21: There's a rocket launcher somewhere in here. We can use that to get out. First to get to the next floor, and second if we need to defend ourselfs.")
     wait()
     print("21: It should be in dat room 199. I know a guy who's sick right now and always keeps one, we can take it from him.")
     wait()
-    print(f"{name}: Alright... sounds good I guess.")
+    print(f"{namePlayer}: Alright... sounds good I guess.")
     wait()
     print("Find the rocket launcher.")
     hospitalOptions()
@@ -725,18 +875,18 @@ def proceedToFirst():
     print("21: Good, I woulda finna went anyway, but I'm glad you fine with it.")
     wait()
     print("21: We gonna make a great team together, kid.")
-    print("But first, tell me somethin, what's your name?")
+    print("But first, tell me somethin, what's your namePlayer?")
     while True:
-        global name
-        name = str(input("Enter your name. >>"))
-        confirm = str(input(f"Is {name} your name?"))
+        global namePlayer
+        namePlayer = str(input("Enter your name. >>"))
+        confirm = str(input(f"Is {namePlayer} your namePlayer?"))
         if confirm in ("Yes"):
-            print(f"{name}: My name is {name}. Pleasure to meet you.")
+            print(f"{namePlayer}: My name is {namePlayer}. Pleasure to meet you.")
             wait()
             print("21: Hell yeah, you bet it is. You already know me.")
             print("21: So is we on our way now we got everything settled?")
             wait()
-            print(f"{name}: Yep... let's get out of here.")
+            print(f"{namePlayer}: Yep... let's get out of here.")
             wait()
             print("With your newfound team member, you open the door to the next floor with confidence in getting out of this place.")
             secondFloor()
