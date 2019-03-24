@@ -491,7 +491,7 @@ def room199():
     print("21: For what?")
     wait()
     inventory.append("Rocket Launcher")
-    inventory.append("Rocket" * 3)
+    inventory.append("Rockets x3")
     print("Creature: Uhh... I dunno!")
     wait()
     print("21: Exactly. Let's get da hell out.")
