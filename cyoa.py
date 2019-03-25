@@ -81,7 +81,7 @@ def pokeCreature():
         print("""
         1. Go through the portal
         2. Go back to the foyer... it's too easy.""")
-        option = input("What do you want to do?? >>")
+        option = input("What do you want to do?? >> ")
         if option == "1":
             print("You hop through the portal...")
             wait()
