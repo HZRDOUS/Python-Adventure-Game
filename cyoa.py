@@ -33,6 +33,7 @@ def gameComplete():
         if tryAgain == "1":
             intro()
         elif tryAgain == "2":
+            print("Thank you for playing!")
             exit()
         else:
             print("Bad input!")
@@ -650,7 +651,6 @@ def finalRoom():
     gameComplete()
 
 def funnyFace():
-    global inventory
     print("21: Make a funny face? Dat might work...")
     wait()
     print("You make a funny face at the monster...")
@@ -662,14 +662,15 @@ def funnyFace():
     print("21: Hey! Dat worked! Let me shoot it!")
     wait()
     print("21 shoots the rocket launcher...")
-    inventory.remove("Rocket x2")
-    inventory.append("Rocket")
     wait()
     print("It hits the creature, and it works!")
     wait()
     monsterDefeat()
 
 def monsterDefeat():
+    global inventory
+    inventory.remove("Rocket x2")
+    inventory.append("Rocket")
     print("21: Hell yeah! We done made it!")
     wait()
     print(f"{namePlayer}: Wooooo hooo!")
@@ -822,7 +823,7 @@ def bossFight():
         print("""
         1. Shoot it right now!
         2. Run for safety!""")
-        option = input("What do you want to do? >>")
+        option = input("What do you want to do? >> ")
         if option == "1":
             shootIt()
         elif option == "2":
@@ -1004,17 +1005,17 @@ def hospitalOptions():
             print("""
             1. Inspect plant
             2. Talk to security guard
-            3. Leave
-            4. Examine creatures""")
+            3. Examine creatures
+            4. Leave""")
             option = input("What do you want to do? >> ")
             if option == "1":
                 inspectPlant()
             elif option == "2":
                 securityGuard()
             elif option == "3":
-                hallway12()
-            elif option == "4":
                 examineCreatures()
+            elif option == "4":
+                hallway12()
             elif option == "44":
                 printOutInventory()
                 wait()
@@ -1031,7 +1032,7 @@ def secondFloorOptions():
     1. First Door
     2. Second Door
     3. Third Door""")
-        door = input("Which door do you want to go through? >>")
+        door = input("Which door do you want to go through? >> ")
         if door == "1":
             secondFloorDoor1()
         elif door == "2":
@@ -1067,15 +1068,16 @@ def proceedToFirst():
     print("21: Good, I woulda finna went anyway, but I'm glad you fine with it.")
     wait()
     print("21: We gonna make a great team together, kid.")
-    print("But first, tell me somethin, what's your name?")
+    print("But first, tell me somethin, what's your name? Type Yes to confirm or anything else to re-enter.")
     while True:
         global namePlayer
-        namePlayer = str(input("Enter your name. >>"))
+        namePlayer = str(input("Enter your name. >> "))
         confirm = str(input(f"Is {namePlayer} your name?"))
         if confirm in ("Yes"):
             print(f"{namePlayer}: My name is {namePlayer}. Pleasure to meet you.")
             wait()
             print("21: Hell yeah, you bet it is. You already know me.")
+            wait()
             print("21: So is we on our way now we got everything settled?")
             wait()
             print(f"{namePlayer}: Yep... let's get out of here.")
@@ -1108,7 +1110,7 @@ def breakAfterConversation():
     while True:
         print("""You're in the break room.
         1. Proceed onward.""")
-        option = input("What do you want to do? >>")
+        option = input("What do you want to do? >> ")
         if option == "1":
             proceedToFirst()
         elif option == "44":
