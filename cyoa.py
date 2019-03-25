@@ -6,7 +6,8 @@ import random
 
 global namePlayer
 namePlayer = ""
-inventory = []
+global inventory
+inventory = [ ]
 global plantCount
 plantCount = 0
 
@@ -35,6 +36,7 @@ def gameComplete():
             exit()
         else:
             print("Bad input!")
+            wait()
             continue
 
 def outOfLives():
@@ -50,6 +52,7 @@ def outOfLives():
             exit()
         else:
             print("Bad input!")
+            wait()
             continue
 
 def deathAftermath():
@@ -61,12 +64,14 @@ def deathAftermath():
         if tryAgain == "1":
             intro()
         elif tryAgain == "2":
-            break
+            exit()
         else:
             print("Bad input!")
+            wait()
             continue
 
 def pokeCreature():
+    global inventory
     print("You poke the creature in the eyes as it lunges towards you...")
     wait()
     inventory.remove("Key")
@@ -102,12 +107,22 @@ def pokeCreature():
                 wait()
                 global triedUnlocking
                 triedUnlocking = True
+                wait()
                 castleOptions()
+            else:
+                print("Invalid input. Try again.")
+                wait()
+                continue
+        else:
+            print("Invalid input. Try again.")
+            wait()
+            continue
 
 def roomDeath():
     print("You should probably know from your instincts these guys don't take well to reasoning.")
     wait()
     print("Aaand you're dead!")
+    wait()
     deathAftermath()
 
 def unlockedRoom():
@@ -131,11 +146,15 @@ def unlockedRoom():
             pokeCreature()
         elif option == "44":
             printOutInventory()
+            wait()
+            continue
         else:
             print("Invalid option.")
+            wait()
             continue
         
 def rightAfterCafeteria():
+    global flag
     print("You continue going left, and you approach a door.")
     print("You try opening it- but it's locked. What do you wanna do?")
     while True:
@@ -147,17 +166,20 @@ def rightAfterCafeteria():
                 option = input("What do you want to do? >> ")
                 if option == "1":
                     print("You give up and walk back to square one.")
+                    flag = True
                     castleOptions()
                 elif option == "2":
-                    print("You use your key to try and u1nlock it...")
+                    print("You use your key to try and unlock it...")
                     wait()
                     print("Voila! It works!")
                     unlockedRoom()
                 elif option == "44":
                     printOutInventory()
+                    wait()
                     continue
                 else: 
                     print("Invalid option. Try again")
+                    wait()
                     continue
         else:
             while True:
@@ -167,10 +189,15 @@ def rightAfterCafeteria():
                 option = input("What do you want to do?? >> ")
                 if option == "1":
                     print("You give up and walk back to square one.")
+                    flag = True
                     wait()
                     castleOptions()
                 elif option == "2":
                     print("You don't have a key to unlock it.")
+                    wait()
+                    continue
+                elif option == "44":
+                    printOutInventory()
                     wait()
                     continue
                 else:
@@ -181,6 +208,7 @@ def rightAfterCafeteria():
 
 
 def sneakyBeakyLike():
+    global inventory
     print("You sneak around the corners of the cafeteria.")
     print("The creatures are far too distracted to notice you.")
     wait()
@@ -193,6 +221,7 @@ def sneakyBeakyLike():
     print("(Handy tip: You can look at your inventory by entering \"44\" at any decision moment.)")
     wait()
     print("You slowly make your way back to the entrance. You're now back where you started.")
+    wait()
     rightAfterCafeteria()
 
 def nonchalantCafe():
@@ -200,6 +229,7 @@ def nonchalantCafe():
     wait()
     print("But you do.")
     print("These creatures don't take kindly to intruders!")
+    wait()
     deathAftermath()
 
 def cafeteriaOptions():
@@ -213,8 +243,13 @@ def cafeteriaOptions():
             nonchalantCafe()
         elif option == "2":
             sneakyBeakyLike()
+        elif option == "44":
+            printOutInventory()
+            wait()
+            continue
         else:
             print("Wrong input. Try again.")
+            wait()
             continue
 
 def rightEdge():
@@ -226,6 +261,7 @@ def rightEdge():
     print("You aren't sure if it's worth it to go in there.")
     wait()
     print("Do you want to try and enter?")
+    wait()
     rightEdgeOptions()
 
 def rightEdgeOptions():
@@ -238,6 +274,10 @@ def rightEdgeOptions():
             cafeteriaOptions()
         elif option == "2":
             rightAfterCafeteria()
+        elif option == "44":
+            printOutInventory()
+            wait()
+            continue
         else:
             print("Wrong input, try again")
             continue
@@ -252,28 +292,36 @@ def coffee():
     1. Clean it up
     2. Just leave it""")
     cleanUp = input("Clean up your mess? >> ")
-    if cleanUp == "1":
-        print("You clean up the mess. ")
-        wait()
-        print("A janitor creature approaches you.")
-        wait()
-        print("Janitor: Thanks for cleaning up that mess. I hate when people leave messes like that and don't clean it up!")
-        wait()
-        breakRoom()
-    elif cleanUp == "2":
-        print("You leave it there like a slob.")
-        wait()
-        print("A janitor creature approaches you. ")
-        wait()
-        print("Janitor: HEY! YOU DIDN'T CLEAN UP YOUR MESS! COME HERE!")
-        wait()
-        print("You try to outrun him, but you can't run faster than him.")
-        wait()
-        print("He eats you, and you die!")
-        wait()
-        deathAftermath()
+    while True:
+        if cleanUp == "1":
+            print("You clean up the mess. ")
+            wait()
+            print("A janitor creature approaches you.")
+            wait()
+            print("Janitor: Thanks for cleaning up that mess. I hate when people leave messes like that and don't clean it up!")
+            wait()
+            breakRoom()
+        elif cleanUp == "2":
+            print("You leave it there like a slob.")
+            wait()
+            print("A janitor creature approaches you. ")
+            wait()
+            print("Janitor: HEY! YOU DIDN'T CLEAN UP YOUR MESS! COME HERE!")
+            wait()
+            print("You try to outrun him, but you can't run faster than him.")
+            wait()
+            print("He eats you, and you die!")
+            wait()
+            deathAftermath()
+        elif cleanUp == "44":
+            printOutInventory()
+            wait()
+            continue
+        else:
+            print("Invalid option. Try again.")
 
 def searchDesk():
+    global inventory
     print("You look through the desk...")
     wait()
     print("You find a pack of porscuittoo.")
@@ -289,10 +337,12 @@ def inspectBookshelf():
     print("21: Dem little s&#ts love that stuff... I dunno why...")
     wait()
     print("Language!")
+    wait()
     secondFloorDoor1Options()
 
 def secondFloorDoor1():
     print("It's a library like room...")
+    wait()
     secondFloorDoor1Options()
 
 def secondFloorDoor1Options():
@@ -310,6 +360,10 @@ def secondFloorDoor1Options():
             print("You decide to leave the room.")
             wait()
             secondFloorOptions()
+        elif option == "44":
+            printOutInventory()
+            wait()
+            continue
         else:
             print("Invalid input. Try again.")
             wait()
@@ -329,12 +383,14 @@ def admirePaintings():
     print("21: You could imagine how I feel, I wanted some chocolate milk myself.")
     wait()
     print(f"{namePlayer}: ...")
+    wait()
     secondFloorDoor2Options()
 
 def admireStatue():
     print("It's a poorly-made statue of David, but with a creature head on it.")
     wait()
     print("You think to yourself, you did not need to look closer at that today...")
+    wait()
     secondFloorDoor2Options()
 
 def secondFloorDoor2():
@@ -355,6 +411,10 @@ def secondFloorDoor2Options():
             admireStatue()
         elif option == "3":
             secondFloorOptions()
+        elif option == "44":
+            printOutInventory()
+            wait()
+            continue
         else:
             print("Invalid input. Try again.")
             wait()
@@ -364,6 +424,7 @@ def secondFloor():
     print("You arrived at the second floor, and are greeted with three doors.")
     wait()
     print("21: The hospital should be somewhere in deez three doors. Let's go explorin'.")
+    wait()
     secondFloorOptions()
 
 def hopsital():
@@ -383,6 +444,7 @@ def inspectPlant():
     plantCount += 1
     if plantCount < 2:
         print("You touch the plant. Neat plant- it's fake though.")
+        wait()
         hospitalOptions()
     else:
         print("You touch the pla-")
@@ -396,6 +458,7 @@ def inspectPlant():
         deathAftermath()
 
 def securityGuard():
+    global inventory
     print("You talk to the security guard.")
     wait()
     print("Secuirty Guard: Ach! Humans! We have enough sickness here, get out!")
@@ -406,8 +469,10 @@ def securityGuard():
     wait()
     print(f"{namePlayer}: Odd. More civilized than actual human beings.")
     if "Porscuitto" in inventory:
+        wait()
         securityGuardOptions()
     else:
+        wait()
         hospitalOptions()
 
 def bribe():
@@ -458,6 +523,7 @@ def bribe():
     print("You both hop into the bucket one at at a time. After a short ride through a bunch of green nothing...")
     wait()
     print("You're both back home!")
+    wait()
     gameComplete()
 
 def securityGuardOptions():
@@ -475,8 +541,17 @@ def securityGuardOptions():
             print("Alright, your choice!")
             wait()
             hospitalOptions()
+        elif option == "44":
+            printOutInventory()
+            wait()
+            continue
+        else:
+            print("Invalid option. Try again.")
+            wait()
+            continue
 
 def room199():
+    global inventory
     wait()
     print("You are on your way to room 199. When you get there, there's a sick creature in the bed.")
     wait()
@@ -491,12 +566,13 @@ def room199():
     print("21: For what?")
     wait()
     inventory.append("Rocket Launcher")
-    inventory.append("Rockets x3")
+    inventory.append("Rocket x3")
     print("Creature: Uhh... I dunno!")
     wait()
     print("21: Exactly. Let's get da hell out.")
     wait()
     print("The rocket launcher has been added to your inventory.")
+    wait()
     hospitalOptions()
 
 def shootIt():
@@ -531,6 +607,7 @@ def stupidMom():
     print("Crea-tur: That's what you get for being immature! Ta-ta!")
     wait()
     print("You're dead!")
+    wait()
     lifeCheck()
 
 def matador():
@@ -547,7 +624,9 @@ def matador():
     lifeCheck()
 
 def finalRoom():
-    inventory.remove("Launcher")
+    global inventory
+    inventory.remove("Rocket Launcher")
+    inventory.remove("Rocket")
     print("With another fire of the rocket launcher, the door with the portal bursts open!")
     wait()
     print(f"{namePlayer}: Oh, hell yeah! Does this mean we can finally leave?")
@@ -569,9 +648,11 @@ def finalRoom():
     print("21 made it through the portal... and after that, you step in too...")
     wait()
     print("And wouldn't you know it, you're back at the train station you came from!")
+    wait()
     gameComplete()
 
 def funnyFace():
+    global inventory
     print("21: Make a funny face? Dat might work...")
     wait()
     print("You make a funny face at the monster...")
@@ -583,12 +664,14 @@ def funnyFace():
     print("21: Hey! Dat worked! Let me shoot it!")
     wait()
     print("21 shoots the rocket launcher...")
-    inventory.remove("Rocket")
+    inventory.remove("Rocket x2")
+    inventory.append("Rocket")
     wait()
     print("It hits the creature, and it works!")
-    monasterDefeat()
+    wait()
+    monsterDefeat()
 
-def monasterDefeat():
+def monsterDefeat():
     wait()
     print("21: Hell yeah! We done made it!")
     wait()
@@ -603,6 +686,7 @@ def monasterDefeat():
     print("She stormed out of the room, presumably to the hospital.")
     wait()
     print("21: Aight, now we got dat outta da way, lemme blow open dis door!")
+    wait()
     finalRoom()
 
 def splitDistract():
@@ -627,8 +711,11 @@ def splitDistract():
             funnyFace()
         elif option == "44":
             printOutInventory()
+            wait()
+            continue
         else:
             print("Invalid input. Try again.")
+            wait()
             continue
 
 def splitAttack():
@@ -655,7 +742,8 @@ def splitAttack():
         print("You decide the best course of action is to shoot the monster...")
         wait()
         print("And voila! A successful hit!")
-        monasterDefeat()
+        wait()
+        monsterDefeat()
 
 def jumpOff():
     print("You jump off the landing and onto the carpet below.")
@@ -663,7 +751,8 @@ def jumpOff():
     print("The monster tries to chase you- but one of his claws snags on the carpet below him, and he trips and falls, knocking him out!")
     wait()
     print("21: Oh, dat's hilarious.")
-    monasterDefeat()
+    wait()
+    monsterDefeat()
 
 def runUp():
     print("You are now at the landing.")
@@ -684,8 +773,11 @@ def runUp():
             jumpOff()
         elif option == "44":
             printOutInventory()
+            wait()
+            continue
         else:
             print("Invalid option. Try again.")
+            wait()
             continue
 
 def runForSafety():
@@ -706,8 +798,11 @@ def runForSafety():
             runUp()
         elif option == "44":
             printOutInventory()
+            wait()
+            continue
         else:
             print("Invalid input. Try again.")
+            wait()
             continue
         
 
@@ -724,7 +819,7 @@ def lifeCheck():
 
 def bossFight():
     global liveCount
-    print(liveCount)
+    print("Lives left : ", liveCount)
     time.sleep(1)
     while True:
         print("""
@@ -737,8 +832,11 @@ def bossFight():
             runForSafety()
         elif option == "44":
             printOutInventory()
+            wait()
+            continue
         else:
             print("Invalid input. Try again.")
+            wait()
             continue
     
 
@@ -801,7 +899,7 @@ def finalBossWarning():
     print("""
     WARNING: Final boss time! 
     You will have THREE (3) chances to try and defeat the boss.
-    TLives will be printed every retry.
+    Lives will be printed every retry.
     Some options might be random and in the hands of fate... so be careful of that!
     If you run out of lives... you need to redo the whole program!
     """)
@@ -811,6 +909,7 @@ def finalBossWarning():
     finalBossRoom()
 
 def hallway12():
+    global inventory
     print("21: Alright, we here. Stand back.")
     wait()
     print(f"{namePlayer}: What? Why?")
@@ -824,7 +923,9 @@ def hallway12():
     print("That was less exciting, especially just in text form.")
     wait()
     print("You both go up the staircase and you're met with a surprise...")
-    inventory.remove("Rocket")
+    inventory.remove("Rocket x3")
+    inventory.append("Rocket x2")
+    wait()
     finalBossWarning()
 
 def examineCreatures():
@@ -839,6 +940,7 @@ def examineCreatures():
         print("Creature 3: I think you mean pork?")
         wait()
         print("Creature 2: Shut up, I know what I'm talking about.")
+        wait()
         hospitalOptions()
     elif randNum == 2:
         print("There are some sick creatures in this waiting room.")
@@ -871,15 +973,18 @@ def hospital():
     print(f"{namePlayer}: Alright... sounds good I guess.")
     wait()
     print("Find the rocket launcher.")
+    wait()
     hospitalOptions()
 
 def hospitalOptions():
+    global inventory
     if "Rocket Launcher" not in inventory:
         while True:
             print("""
             1. Inspect plant
             2. Talk to security guard
-            3. Go to room 199""")
+            3. Examine creatures
+            4. Go to room 199""")
             option = input("What do you want to do? >> ")
             if option == "1":
                 inspectPlant()
@@ -891,6 +996,7 @@ def hospitalOptions():
                 room199()
             elif option == "44":
                 printOutInventory()
+                wait()
                 continue
             else:
                 print("Invalid input. Try again.")
@@ -901,7 +1007,8 @@ def hospitalOptions():
             print("""
             1. Inspect plant
             2. Talk to security guard
-            3. Leave""")
+            3. Leave
+            4. Examine creatures""")
             option = input("What do you want to do? >> ")
             if option == "1":
                 inspectPlant()
@@ -909,8 +1016,11 @@ def hospitalOptions():
                 securityGuard()
             elif option == "3":
                 hallway12()
+            elif option == "4":
+                examineCreatures()
             elif option == "44":
                 printOutInventory()
+                wait()
                 continue
             else:
                 print("Invalid input. Try again.")
@@ -919,7 +1029,6 @@ def hospitalOptions():
 
 
 def secondFloorOptions():
-    wait()
     while True:
         print("""
     1. First Door
@@ -932,8 +1041,13 @@ def secondFloorOptions():
             secondFloorDoor2()
         elif door == "3":
             hospital()
+        elif door == "44":
+            printOutInventory()
+            wait()
+            continue
         else:
             print("Invalid option.")
+            wait()
             continue
 
 def proceedToFirst():
@@ -956,11 +1070,11 @@ def proceedToFirst():
     print("21: Good, I woulda finna went anyway, but I'm glad you fine with it.")
     wait()
     print("21: We gonna make a great team together, kid.")
-    print("But first, tell me somethin, what's your namePlayer?")
+    print("But first, tell me somethin, what's your name?")
     while True:
         global namePlayer
         namePlayer = str(input("Enter your name. >>"))
-        confirm = str(input(f"Is {namePlayer} your namePlayer?"))
+        confirm = str(input(f"Is {namePlayer} your name?"))
         if confirm in ("Yes"):
             print(f"{namePlayer}: My name is {namePlayer}. Pleasure to meet you.")
             wait()
@@ -970,6 +1084,7 @@ def proceedToFirst():
             print(f"{namePlayer}: Yep... let's get out of here.")
             wait()
             print("With your newfound team member, you open the door to the next floor with confidence in getting out of this place.")
+            wait()
             secondFloor()
         else:
             continue
@@ -989,17 +1104,23 @@ def creatureBrkRoom():
     print("You: Well, that's comforting, I guess...")
     wait()
     print("That conversation was odd.")
+    wait()
     breakRoom()
 
 def breakAfterConversation():
-    print("""You're in the break room.
-    1. Proceed onward.""")
     while True:
-        option = int(input("What do you want to do? >>"))
-        if option == 1:
+        print("""You're in the break room.
+        1. Proceed onward.""")
+        option = input("What do you want to do? >>")
+        if option == "1":
             proceedToFirst()
+        elif option == "44":
+            printOutInventory()
+            wait()
+            continue
         else:
             print("Invalid option, try again.")
+            wait()
             continue
 
 def savage21():
@@ -1067,6 +1188,7 @@ def savage21():
     print("21: Good luck on your travels, child, and I hope you make it back in one piece.")
     wait()
     print("You: Didn't think I'd have someone say that to me, but thanks...")
+    wait()
     breakAfterConversation()
 
 def breakRoom():
@@ -1084,8 +1206,13 @@ def breakRoom():
             creatureBrkRoom()
         elif option == "3":
             coffee()
+        elif option == "44":
+            printOutInventory()
+            wait()
+            continue
         else:
             print("Invalid option. Try again.")
+            wait()
             continue
 
 def leftEdge():
@@ -1098,6 +1225,7 @@ def leftEdge():
     print("You continue creeping to the left... and you come across a break room.")
     wait()
     print("The door is unlocked, so you decide to open it. There's a friendly creature sitting there, and a shadowy figure in the chair at a desk.")
+    wait()
     breakRoom()
 
 def tryLeaving():
@@ -1111,6 +1239,7 @@ def walkMiddle():
     print("You step into the middle of the castle foyer...")
     wait()
     print("You die! The guarding monsters don't like intruders.")
+    wait()
     deathAftermath()
 
 def tryUnlock():
@@ -1119,17 +1248,23 @@ def tryUnlock():
     print("There's no keyhole! No way out!")
     global triedUnlocking
     triedUnlocking = True
+    wait()
     castleOptions()
 
 def enterCastle():
     print("You enter the castle ever-so-carefully. You're in the foyer now, and there are multiple creatures guarding a big staircase.")
     wait()
     print("You think to yourself that you should probably be very quiet and sneaky if you're going to get out successfully.")
+    wait()
     castleOptions()
+
+global triedUnlocking
+triedUnlocking = False
 
 def castleOptions():
     global triedUnlocking
-    triedUnlocking = False
+    global inventory
+    global flag
     if "Key" not in inventory and triedUnlocking is False:
         while True:
             print("""
@@ -1146,8 +1281,13 @@ def castleOptions():
                 rightEdge()
             elif option == "4":
                 leftEdge()
+            elif option == "44":
+                printOutInventory()
+                wait()
+                continue
             else:
                 print("Invalid input.")
+                wait()
                 continue
     elif "Key" in inventory and triedUnlocking is False:
         while True:
@@ -1156,7 +1296,7 @@ def castleOptions():
             2. Walk to the middle of the room and ignore your instincts.
             3. Creep around the left edge of the room.
             4. Try unlocking the front door with the key.""")
-            option = input("What do you want to do?")
+            option = input("What do you want to do? >> ")
             if option == "1":
                 tryLeaving()
             elif option == "2":
@@ -1165,8 +1305,13 @@ def castleOptions():
                 leftEdge()
             elif option == "4":
                 tryUnlock()
+            elif option == "44":
+                printOutInventory()
+                wait()
+                continue
             else:
                 print("Invalid input.")
+                wait()
                 continue
     elif "Key" in inventory and triedUnlocking is True:
         while True:
@@ -1174,15 +1319,20 @@ def castleOptions():
             1. Go back out of the castle.
             2. Walk to the middle of the room and ignore your instincts.
             3. Creep around the left edge of the room.""")
-            option = input("What do you want to do?")
+            option = input("What do you want to do? >> ")
             if option == "1":
                 tryLeaving()
             elif option == "2":
                 walkMiddle()
             elif option == "3":
                 leftEdge()
+            elif option == "44":
+                printOutInventory()
+                wait()
+                continue
             else:
                 print("Invalid input.")
+                wait()
                 continue
     elif "Key" not in inventory and flag is True:
         while True:
@@ -1190,15 +1340,20 @@ def castleOptions():
             1. Go back out of the castle.
             2. Walk to the middle of the room and ignore your instincts.
             3. Creep around the left edge of the room.""")
-            option = input("What do you want to do?")
+            option = input("What do you want to do? >> ")
             if option == "1":
                 tryLeaving()
             elif option == "2":
                 walkMiddle()
             elif option == "3":
                 leftEdge()
+            elif option == "44":
+                printOutInventory()
+                wait()
+                continue
             else:
                 print("Invalid input.")
+                wait()
                 continue
 
 def talk1():
@@ -1218,30 +1373,37 @@ def talk1():
     wait()
     print("You: Uhh... okayyy?")
     print("You return back to where you started.")
+    wait()
     introOptions()
 
 def railway():
     print("You go back to the railway and wait a little...")
     wait()
     print("No trains! You give up and head back to the front of the castle.")
+    wait()
     introOptions()
 
 def introOptions():
-        while True:
-            print("""
-            1. Go back to the railway to find a way home.
-            2. Talk to a bystanding creature
-            3. Go up to the castle steps and enter.""")
-            option = input("What do you want to do? >>")
-            if option == "1":
-                railway()
-            elif option == "2":
-                talk1()
-            elif option == "3":
-                enterCastle()
-            else:
-                print("Invalid option. Try again.")
-                continue
+    while True:
+        print("""
+        1. Go back to the railway to find a way home.
+        2. Talk to a bystanding creature
+        3. Go up to the castle steps and enter.""")
+        option = input("What do you want to do? >>")
+        if option == "1":
+            railway()
+        elif option == "2":
+            talk1()
+        elif option == "3":
+            enterCastle()
+        elif option == "44":
+            printOutInventory()
+            wait()
+            continue
+        else:
+            print("Invalid option. Try again.")
+            wait()
+            continue
 
 def intro():
     print("""
