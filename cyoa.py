@@ -283,7 +283,6 @@ def rightEdgeOptions():
             continue
 
 def coffee():
-    wait()
     print("You try some coffee on the desk...")
     wait()
     print("You don't like it, so you spit it out.")
@@ -439,7 +438,6 @@ def hopsital():
     hospitalOptions()
 
 def inspectPlant():
-    wait()
     global plantCount
     plantCount += 1
     if plantCount < 2:
@@ -672,7 +670,6 @@ def funnyFace():
     monsterDefeat()
 
 def monsterDefeat():
-    wait()
     print("21: Hell yeah! We done made it!")
     wait()
     print(f"{namePlayer}: Wooooo hooo!")
